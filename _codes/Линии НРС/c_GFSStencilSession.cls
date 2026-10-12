@@ -101,6 +101,7 @@ Private Sub TryDrawing(ByVal drawingWindow As Visio.Window)
     If manageRuntime Then
         DockStencil drawingWindow, owner
         DockVisibleReadOnlyStencils drawingWindow
+        EnsureLibrary drawingWindow
     End If
     drawingWindow.Activate
     drawingKey = CStr(drawing.ID)
@@ -146,7 +147,7 @@ Private Sub DockStencil(ByVal drawingWindow As Visio.Window, ByVal stencil As Vi
     If Len(stencil.FullName) = 0 Then Exit Sub
     If Not IsDocked(drawingWindow, stencil) Then
         drawingWindow.Activate
-        Set opened = host.Documents.OpenEx(stencil.FullName, visOpenRO + visOpenDocked)
+        Set opened = host.Documents.OpenEx(stencil.FullName, visOpenRO + visOpenDocked + visOpenNoWorkspace + visOpenDontList)
     End If
     ' Hide only an MDI stencil window after its docked copy was verified.
     ' Window type 2 is the built-in MDI stencil window; docked panes are type 7.
@@ -194,4 +195,45 @@ Private Sub DockVisibleReadOnlyStencils(ByVal drawingWindow As Visio.Window)
     Exit Sub
 Failed:
     Debug.Print "GraFiS stencil window scan: " & Err.Description
+End Sub
+
+Private Function LibraryDocumentLoaded(ByVal fileName As String) As Boolean
+    Dim doc As Visio.Document
+    For Each doc In host.Documents
+        If StrComp(doc.FullName, fileName, vbTextCompare) = 0 Then
+            LibraryDocumentLoaded = True
+            Exit Function
+        End If
+    Next doc
+End Function
+
+Private Sub EnsureLibrary(ByVal drawingWindow As Visio.Window)
+    Dim files As Variant, item As Variant, fileName As String
+    Dim central As String, opened As Visio.Document
+    If Not manageRuntime Then Exit Sub
+    central = owner.Path & "Моделирование.vss"
+    If StrComp(owner.Name, "Моделирование.vss", vbTextCompare) <> 0 Then
+        If Len(Dir$(central)) > 0 Then
+            If Not LibraryDocumentLoaded(central) Then
+                drawingWindow.Activate
+                Set opened = host.Documents.OpenEx(central, visOpenRO + visOpenDocked + visOpenNoWorkspace + visOpenDontList)
+                drawingWindow.Activate
+            End If
+        End If
+        Exit Sub
+    End If
+    files = Split("Авиация.vss|Автотехника.vss|Водоснабжение НРС.vss|Водоснабжение.vss|ГДЗС.vss|Железная дорога.vss|ИИ.vss|Конструкции.vss|" & _
+        "Линии НРС.vss|Линии.vss|Моделирование.vss|Отчеты.vss|Очаг.vss|ПТВ НРС.vss|ПТВ.vss|План на местности.vss|" & _
+        "Пожарная техника НРС.vss|Пожарная техника.vss|Поэтажный план.vss|Прочее.vss|Резервуары.vss|Робототехнические средства.vss|Свойства и экспорт.vss|Связь и освещение.vss|" & _
+        "Совмещенный график.vss|Специальные функции.vss|Техника прочее НРС.vss|Техника прочее.vss|Управление СиС.vss|Учения.vss|Формулы.vss|Эвакуация.vss", "|")
+    For Each item In files
+        fileName = owner.Path & CStr(item)
+        If Len(Dir$(fileName)) > 0 Then
+            If Not LibraryDocumentLoaded(fileName) Then
+                drawingWindow.Activate
+                Set opened = host.Documents.OpenEx(fileName, visOpenRO + visOpenDocked + visOpenNoWorkspace + visOpenDontList)
+                drawingWindow.Activate
+            End If
+        End If
+    Next item
 End Sub
