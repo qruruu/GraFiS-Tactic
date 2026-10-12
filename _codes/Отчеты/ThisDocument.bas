@@ -15,6 +15,8 @@ Attribute vmO_App.VB_VarHelpID = -1
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set vmO_App = Nothing
     
     On Error Resume Next
     

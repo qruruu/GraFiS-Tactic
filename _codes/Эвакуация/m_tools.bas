@@ -96,21 +96,32 @@ End Function
 
 '--------------------------------Сохранение лога ошибки-------------------------------------
 Public Sub SaveLog(ByRef error As ErrObject, ByVal eroorPosition As String, Optional ByVal addition As String)
-'Прока сохранения лога программы
-Dim errString As String
-Const D = " | "
-
-'---Открываем файл лога (если его нет - создаем)
-    Open ThisDocument.path & "/Log.txt" For Append As #1
-    
-'---Формируем строку записи об ошибке (Дата | ОС | Path | APPDATA
-    errString = Now & D & Environ("OS") & D & "Visio " & Application.Version & D & ThisDocument.fullName & D & eroorPosition & _
-        D & error.number & D & error.Description & D & error.Source & D & eroorPosition & D & addition
-    
-'---Записываем в конец файла лога сведения о ошибке
-    Print #1, errString
-    
-'---Закрываем фацл лога
-    Close #1
-
+    Dim logHandle As Integer
+    Dim logOpened As Boolean
+    Dim logPath As String, errString As String
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    savedNumber = error.Number
+    savedDescription = error.Description
+    savedSource = error.Source
+    On Error GoTo LogFailed
+    errString = Now & " | " & Environ$("OS") & " | Visio " & Application.Version & _
+        " | " & ThisDocument.FullName & " | " & eroorPosition & " | " & savedNumber & _
+        " | " & savedDescription & " | " & savedSource & " | " & addition
+    logPath = ThisDocument.Path
+    If Len(logPath) > 0 Then
+        If Right$(logPath, 1) <> "\" Then logPath = logPath & "\"
+    Else
+        logPath = Environ$("TEMP") & "\"
+    End If
+    logHandle = FreeFile
+    Open logPath & "Log.txt" For Append As #logHandle
+    logOpened = True
+    Print #logHandle, errString
+LogFinished:
+    On Error Resume Next
+    If logOpened Then Close #logHandle
+    Exit Sub
+LogFailed:
+    Debug.Print "GraFiS log unavailable: " & errString
+    Resume LogFinished
 End Sub

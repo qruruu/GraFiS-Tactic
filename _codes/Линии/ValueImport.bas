@@ -1,7 +1,7 @@
 Attribute VB_Name = "ValueImport"
 '------------------------Модуль для процедур импорта значений ячеек-------------------
 '------------------------Блок Значений ячеек------------------------------------------
-Public Sub HoseResistanceValueImport(ShpIndex As Long)
+Public Sub HoseResistanceValueImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Сопротивление в соответсвии с материалом и диаметром
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -9,7 +9,7 @@ Dim indexPers As Integer
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения показателя сопротивления пожарного рукава
@@ -25,7 +25,7 @@ Set shp = Nothing
 
 End Sub
 
-Public Sub HoseMaxFlowValueImport(ShpIndex As Long)
+Public Sub HoseMaxFlowValueImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Пропускная способность в соответсвии с материалом и диаметром
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -33,7 +33,7 @@ Dim indexPers As Integer
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры
@@ -49,7 +49,7 @@ Set shp = Nothing
 
 End Sub
 
-Public Sub HoseWeightValueImport(ShpIndex As Long)
+Public Sub HoseWeightValueImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Масса З_Рукава в соответсвии с материалом и диаметром
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -57,7 +57,7 @@ Dim indexPers As Integer
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры

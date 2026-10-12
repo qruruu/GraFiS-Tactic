@@ -33,7 +33,7 @@ Application.DoCmd (1312)
 End Sub
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub HoseDiametersListImport(ShpIndex As Long)
+Public Sub HoseDiametersListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта Вариантов стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -41,7 +41,7 @@ Dim indexPers As Integer
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры

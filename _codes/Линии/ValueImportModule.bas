@@ -1,7 +1,7 @@
 Attribute VB_Name = "ValueImportModule"
 '------------------------Модуль для процедур импорта значений ячеек-------------------
 '------------------------Блок Значений ячеек------------------------------------------
-Public Sub StvolStreamValueImport(ShpIndex As Long)
+Public Sub StvolStreamValueImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Тип струи в соответсвии с видом струи
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -11,7 +11,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры
@@ -40,7 +40,7 @@ EX:
     SaveLog Err, "StvolStreamValueImport"
 End Sub
 
-Public Sub StvolDiameterInImport(ShpIndex As Long)
+Public Sub StvolDiameterInImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Тип струи в соответсвии с видом струи
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -50,7 +50,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры
@@ -82,7 +82,7 @@ EX:
     SaveLog Err, "StvolDiameterInImport"
 End Sub
 
-Public Sub StvolProductionImport(ShpIndex As Long)
+Public Sub StvolProductionImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Напор в соответсвии с прочими данными
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -92,7 +92,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры
@@ -148,7 +148,7 @@ EX:
     SaveLog Err, "StvolProductionImport"
 End Sub
 
-Public Sub StvolWFLinkImport(ShpIndex As Long)
+Public Sub StvolWFLinkImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке WFLink (ссылка на страничку сайта wiki-fire.org)
 'в соответствии с моделью ствола
 '---Объявляем переменные
@@ -159,7 +159,7 @@ Dim Criteria As String
     On Error GoTo EX
     
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
 '    IndexPers = shp.Cells("User.IndexPers")
     
 '---Формируем запрос к БД и получаем значение ссылки на wiki-fire.org
@@ -174,7 +174,7 @@ EX:
     SaveLog Err, "StvolWFLinkImport"
 End Sub
 
-Public Sub StvolWFLinkFree(ShpIndex As Long)
+Public Sub StvolWFLinkFree(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Прока устанавливает в качестве ссылки пустое значение
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -184,7 +184,7 @@ Dim Criteria As String
     On Error GoTo EX
     
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     
 '---Устанавливаем пустую ссылку, чтобы формула получения ссылки использовала модель ствола по-умолчанию
     shp.Cells("Prop.WFLink").FormulaU = ""
@@ -197,7 +197,7 @@ EX:
     SaveLog Err, "StvolWFLinkImport"
 End Sub
 
-Public Sub StvolRFImport(ShpIndex As Long)
+Public Sub StvolRFImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Кратность в соответсвии с моделью ствола
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -207,7 +207,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Кратности при заданной модели ствола для текущей фигуры
@@ -236,7 +236,7 @@ EX:
 End Sub
 
 
-Public Sub ColFlowMaxImport(ShpIndex As Long)
+Public Sub ColFlowMaxImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура присваивающая значение ячейке Проводимость в соответсвии с напором
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -246,7 +246,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
 '    IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Кратности при заданной модели ствола для текущей фигуры

@@ -10,13 +10,12 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
             ShpObj.Cells("Prop.FireCategorie.Format").FormulaU = ListImport("З_Интенсивности", "Категория")
         
         '---Обновляем список описаний в соответствии со значением категории
-            DescriptionsListImport (ShpObj.ID)
+            DescriptionsListImport ShpObj.ID, ShpObj
         '---Запускаем процедуру получения ЗНАЧЕНИЙ факторов пожара для данного описания
-            GetFactorsByDescription (ShpObj.ID)
-        
+            GetFactorsByDescription ShpObj.ID, ShpObj
         '---Добавляем ссылку на текущее время страницы
         ShpObj.Cells("Prop.SquareTime").Formula = _
-            Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+            GFSCurrentTime(ShpObj)
     End If
 
 On Error Resume Next 'НЕ ЗАБЫТЬ ЧТО ВКЛЮЧЕН ОБРАБОТЧИК ОШИБКИ
@@ -30,20 +29,20 @@ Public Sub SetRushTime(ShpObj As Visio.Shape)
     If IsFirstDrop(ShpObj) Then
         '---Добавляем ссылку на текущее время страницы
         ShpObj.Cells("Prop.RushTime").Formula = _
-            Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+            GFSCurrentTime(ShpObj)
     End If
 
 
 End Sub
 
-Public Sub DescriptionsListImport(ShpIndex As Long)
+Public Sub DescriptionsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта списка описаний
 '---Объявляем переменные
 Dim shp As Visio.Shape
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
 
 '---Устанавливаем значение категории
     Criteria = shp.Cells("Prop.FireCategorie").ResultStr(Visio.visNone)
@@ -71,12 +70,12 @@ End Sub
 
 
 
-Private Sub ToZeroListIndex(cell As String, ShpIndex As Long) '!!!Временно не используется в связи с отсутствием необхоимости
+Private Sub ToZeroListIndex(cell As String, ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing) '!!!Временно не используется в связи с отсутствием необхоимости
 '---В случае, если значение поля для нового списка равно "", переводим фокус в ячейке на 0-е положение.
 Dim cellName As String, CellContent As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     
 '---Определяем названия ячеек которым будут меняться значения
     cellName = "Prop." & cell

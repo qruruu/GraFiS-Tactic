@@ -11,6 +11,8 @@ Dim WithEvents GDZSAppEvents As Visio.Application
 Attribute GDZSAppEvents.VB_VarHelpID = -1
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set GDZSAppEvents = Nothing
 'Процедура при закрытии документа
 
 '---Очищаем переменную приложения
@@ -23,6 +25,7 @@ Private Sub Document_DocumentOpened(ByVal doc As IVDocument)
 '---Добавляем ячейки "User.FireTime", "User.CurrentTime"
     AddTimeUserCells
 
+    On Error Resume Next
 '---Показываем окно свойств
     Application.ActiveWindow.Windows.ItemFromID(visWinIDCustProp).Visible = True
 
@@ -40,9 +43,9 @@ Set GDZSAppEvents = Visio.Application
 
 End Sub
 
-Private Sub GDZSAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub GDZSAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
-Dim ShpInd As Integer
+Dim ShpInd As Long
 
 '---Проверяем, имеет ли ячейка родительскую фигуру (например, является стилем)
     If cell.Shape Is Nothing Then Exit Sub
@@ -52,13 +55,13 @@ Dim ShpInd As Integer
         If cell.Name = "Prop.AirDevice" Then
             ShpInd = cell.Shape.ID
             '---Запускаем процедуру получения списков аппаратов
-            AirDevicesListImport (ShpInd)
+            AirDevicesListImport ShpInd, cell.Shape
             '---Запускаем процедуру получения ТТХ для указанной модели ДАСВ
-            GetTTH (ShpInd)
+            GetTTH ShpInd, cell.Shape
         ElseIf cell.Name = "Prop.FogRMK" Then
             ShpInd = cell.Shape.ID
             '---Запускаем процедуру получения ТТХ для указанной модели Дымососов
-            GetTTH (ShpInd)
+            GetTTH ShpInd, cell.Shape
         End If
     End If
 
@@ -81,4 +84,18 @@ Dim cell As Visio.cell
         docSheet.Cells("User.CurrentTime").FormulaU = "User.FireTime"
     End If
 
+End Sub
+
+Private Sub GDZSAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    GDZSAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "GDZSAppEvents_CellChanged"
+    Resume EventFinished
 End Sub

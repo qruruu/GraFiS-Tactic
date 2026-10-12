@@ -1,7 +1,7 @@
 Attribute VB_Name = "ValueImport"
 '------------------------Модуль для процедур импорта значений ячеек-------------------
 '------------------------Блок Значений ячеек------------------------------------------
-Public Sub GetFactorsByDescription(ShpIndex As Long)
+Public Sub GetFactorsByDescription(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта данных о интенсивностях и линейной скорости из базы данных Signs по описанию пожара
 Dim dbsE As Object, rsType As Object
 Dim pth As String
@@ -12,7 +12,7 @@ Dim shp As Visio.Shape
     On Error GoTo Tail
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
 
 '---Определяем критерии поиска записи в наборе данных
     Categorie = shp.Cells("Prop.FireCategorie").ResultStr(visUnitsString)

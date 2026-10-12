@@ -16,16 +16,16 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
             '---Проверяем для какой фигуры выполняется процедура и обновляем зависимые списки (только для звеньев)
             Select Case ShpObj.Cells("User.IndexPers")
                 Case Is = 46 'ДАСВ
-                    AirDevicesListImport (ShpObj.ID)
-                    GetTTH (ShpObj.ID)
+                    AirDevicesListImport ShpObj.ID, ShpObj
+                    GetTTH ShpObj.ID, ShpObj
                 Case Is = 90 'ДАСК
-                    AirDevicesListImport (ShpObj.ID)
-                    GetTTH (ShpObj.ID)
+                    AirDevicesListImport ShpObj.ID, ShpObj
+                    GetTTH ShpObj.ID, ShpObj
             End Select
             
             '---Добавляем ссылку на текущее время страницы                                                                                         'Для всех остальных
                 ShpObj.Cells("Prop.FormingTime").Formula = _
-                    Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+                    GFSCurrentTime(ShpObj)
     
         End If
     End If
@@ -44,12 +44,11 @@ Public Sub FogRMKBaseListsRefresh(ShpObj As Visio.Shape)
         
         '---Обновляем список моделей и их ТТХ
         '---Обновляем список моделей и их ТТХ
-        FogRMKListImport (ShpObj.ID)
-        GetTTH (ShpObj.ID)
-        
+        FogRMKListImport ShpObj.ID, ShpObj
+        GetTTH ShpObj.ID, ShpObj
         '---Добавляем ссылку на текущее время страницы
             ShpObj.Cells("Prop.SetTime").Formula = _
-                Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+                GFSCurrentTime(ShpObj)
     End If
     
 
@@ -62,7 +61,7 @@ Application.DoCmd (1312)
 End Sub
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub AirDevicesListImport(ShpIndex As Long)
+Public Sub AirDevicesListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -71,7 +70,7 @@ Dim Criteria As String
 
     On Error GoTo ex
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели(Набор) для текущей фигуры
@@ -95,7 +94,7 @@ ex:
 End Sub
 
 
-Public Sub FogRMKListImport(ShpIndex As Long)
+Public Sub FogRMKListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей дымососов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -104,7 +103,7 @@ Dim Criteria As String
 
     On Error GoTo ex
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели(Набор) для текущей фигуры

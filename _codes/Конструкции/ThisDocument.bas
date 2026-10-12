@@ -18,6 +18,7 @@ Private ButEvent As c_Buttons
 
 
 Private Sub app_CellChanged(ByVal Cell As IVCell)
+    If ButEvent Is Nothing Then Exit Sub
 '---Один раз в выполняем обновление иконок на кнопках
     cellChangedCount = cellChangedCount + 1
     If cellChangedCount > cellChangedInterval Then
@@ -32,6 +33,8 @@ End Sub
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
     CloseDoc
 End Sub
 

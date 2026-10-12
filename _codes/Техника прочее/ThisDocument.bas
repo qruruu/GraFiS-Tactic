@@ -11,6 +11,8 @@ Dim WithEvents vdAppEventsTech2 As Visio.Application
 Attribute vdAppEventsTech2.VB_VarHelpID = -1
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set vdAppEventsTech2 = Nothing
 'Процедура при закрытии документа
 
 '---Очищаем переменную приложения
@@ -40,7 +42,7 @@ Private Sub Document_DocumentOpened(ByVal doc As IVDocument)
 
 End Sub
 
-Private Sub vdAppEventsTech2_CellChanged(ByVal cell As IVCell)
+Private Sub vdAppEventsTech2_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
 Dim ShpInd As Integer
 
@@ -62,7 +64,6 @@ Dim ShpInd As Integer
 'В случае, если произошло изменение не нужной ячейки прекращаем событие
 Exit Sub
 EX:
-    MsgBox "В ходе выполнения программы произошла ошибка! Если она будет повторяться - обратитесь к разработчкиу.", , ThisDocument.Name
     SaveLog Err, "vdAppEventsTech2_CellChanged"
 End Sub
 
@@ -83,4 +84,18 @@ Dim cell As Visio.cell
         docSheet.Cells("User.CurrentTime").FormulaU = "User.FireTime"
     End If
 
+End Sub
+
+Private Sub vdAppEventsTech2_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    vdAppEventsTech2_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "vdAppEventsTech2_CellChanged"
+    Resume EventFinished
 End Sub

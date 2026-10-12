@@ -8,15 +8,14 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
 ShpObj.Cells("Prop.Unit.Format").FormulaU = ListImport("Подразделения", "Подразделение")
 
 '---Обновляем список моделей и их ТТХ
-ModelsListImport (ShpObj.ID)
-
+ModelsListImport ShpObj.ID, ShpObj
 On Error Resume Next 'НЕ ЗАБЫТЬ ЧТО ВКЛЮЧЕН ОБРАБОТЧИК ОШИКИ
 Application.DoCmd (1312)
 
 End Sub
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub ModelsListImport(ShpIndex As Long)
+Public Sub ModelsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -26,7 +25,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели(Набор) для текущей фигуры

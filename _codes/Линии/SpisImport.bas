@@ -38,10 +38,10 @@ Public Sub DropNewShape(ShpObj As Visio.Shape)
         '---Добавляем ссылку на текущее время страницы
         If ShpObj.Cells("User.IndexPers").Result(visUnitsNone) = 102 Then                           'Свищ
             ShpObj.Cells("Prop.BreakeupTime").Formula = _
-                Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+                GFSCurrentTime(ShpObj)
         ElseIf ShpObj.Cells("User.IndexPers").Result(visUnitsNone) = 103 Then                       'Мостик
             ShpObj.Cells("Prop.SetTime").Formula = _
-                Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+                GFSCurrentTime(ShpObj)
         End If
         
         
@@ -50,7 +50,7 @@ Public Sub DropNewShape(ShpObj As Visio.Shape)
 End Sub
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub HoseDiametersListImport(ShpIndex As Long)
+Public Sub HoseDiametersListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта Вариантов стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -58,7 +58,7 @@ Dim indexPers As Integer
 Dim Criteria As String
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры

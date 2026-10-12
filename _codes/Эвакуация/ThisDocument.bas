@@ -30,6 +30,8 @@ Attribute app.VB_VarHelpID = -1
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
     DeActivateApp
     DeActivateToolbarButtons
     RemoveTB_Evacuation

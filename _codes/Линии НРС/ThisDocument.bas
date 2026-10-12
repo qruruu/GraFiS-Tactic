@@ -14,6 +14,9 @@ Attribute LineAppEvents.VB_VarHelpID = -1
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set LineAppEvents = Nothing
+    Set C_ConnectionsTrace = Nothing
 'Процедура закрытия документа и удаления его рабочих элементов
 
 '---Очищаем объект ButEvent и удаляем кнопку "Рукав" с панели управления "Превращения"
@@ -93,21 +96,21 @@ ex:
 End Sub
 
 
-Private Sub LineAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub LineAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
-Dim ShpInd As Integer
+Dim ShpInd As Long
 '---Проверяем имя ячейки
     
     If cell.Name = "Prop.HoseMaterial" Or cell.Name = "Prop.HoseDiameter" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения СПИСКОВ диаметров рукавов
-        HoseDiametersListImport (ShpInd)
+        HoseDiametersListImport ShpInd, cell.Shape
         '---Запускаем процедуру получения ЗНАЧЕНИЙ Сопротивлений рукавов
-        HoseResistanceValueImport (ShpInd)
+        HoseResistanceValueImport ShpInd, cell.Shape
         '---Запускаем процедуру получения ЗНАЧЕНИЙ Пропускной способности рукавов
-        HoseMaxFlowValueImport (ShpInd)
+        HoseMaxFlowValueImport ShpInd, cell.Shape
         '---Запускаем процедуру получения ЗНАЧЕНИЙ Массы рукавов
-        HoseWeightValueImport (ShpInd)
+        HoseWeightValueImport ShpInd, cell.Shape
     End If
     
     
@@ -145,8 +148,9 @@ End Sub
 
 Private Sub LineAppEvents_ShapeAdded(ByVal Shape As IVShape)
 'Событие добавления на лист фигуры
-Dim v_Cntrl As CommandBarControl
+Dim v_Ctrl As CommandBarControl
 Dim SecExists As Boolean
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
     
 '---Включаем обработку ошибок
     On Error GoTo Tail
@@ -211,4 +215,18 @@ Dim cell As Visio.cell
         docSheet.Cells("User.CurrentTime").FormulaU = "User.FireTime"
     End If
 
+End Sub
+
+Private Sub LineAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    LineAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "LineAppEvents_CellChanged"
+    Resume EventFinished
 End Sub

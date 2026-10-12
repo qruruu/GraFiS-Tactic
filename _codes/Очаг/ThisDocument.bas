@@ -77,6 +77,9 @@ EX:
 End Sub
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
+    Set SquareAppEvents = Nothing
 'Процедура закрытия документа и удаления его рабочих элементов
 
 '---Очищаем объект ButEvent и удаляем кнопку "Площадь" с панели управления "Превращения"
@@ -98,7 +101,7 @@ Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
 End Sub
 
 
-Private Sub SquareAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub SquareAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
 Dim ShpInd As Long '(64) - Площадь пожара
 'Dim shpFire As Visio.Shape 'Фигура Площадь пожара
@@ -111,13 +114,13 @@ Dim ShpInd As Long '(64) - Площадь пожара
     If cell.Name = "Prop.FireCategorie" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения СПИСКОВ описаний объектов пожара для указанной категории
-        DescriptionsListImport (ShpInd)
+        DescriptionsListImport ShpInd, cell.Shape
     End If
         
     If cell.Name = "Prop.FireDescription" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения ЗНАЧЕНИЙ факторов пожара для данного описания
-        GetFactorsByDescription (ShpInd)
+        GetFactorsByDescription ShpInd, cell.Shape
     End If
 
 'В случае, если произошло изменение не нужной ячейки прекращаем событие
@@ -178,6 +181,7 @@ End Sub
 Private Sub SquareAppEvents_ShapeAdded(ByVal Shape As IVShape)
 'Событие добавления на лист фигуры
 Dim v_Ctrl As CommandBarControl
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
 'Dim SecExists As Boolean
     
 '---Включаем обработку ошибок
@@ -248,6 +252,10 @@ Dim cell As Visio.cell
 End Sub
 
 Private Sub app_CellChanged(ByVal cell As IVCell)
+    If ButEventFireArea Is Nothing Then Exit Sub
+    If ButEventStorm Is Nothing Then Exit Sub
+    If ButEventFog Is Nothing Then Exit Sub
+    If ButEventRush Is Nothing Then Exit Sub
 '---Один раз в выполняем обновление иконок на кнопках
     cellChangedCount = cellChangedCount + 1
     If cellChangedCount > cellChangedInterval Then
@@ -260,3 +268,17 @@ Private Sub app_CellChanged(ByVal cell As IVCell)
 End Sub
 
 
+
+Private Sub SquareAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    SquareAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "SquareAppEvents_CellChanged"
+    Resume EventFinished
+End Sub

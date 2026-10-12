@@ -18,7 +18,7 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
                 GetTTH ShpObj
             '---ƒобавл€ем ссылку на текущее врем€ страницы
                 ShpObj.Cells("Prop.ArrivalTime").Formula = _
-                    Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+                    GFSCurrentTime(ShpObj)
         End If
     End If
 

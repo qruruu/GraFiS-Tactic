@@ -477,7 +477,7 @@ End Sub
 'Public Sub MakeHoseLine()
 ''Метод обращения в рукавную линию
 'Dim ShpObj As Visio.Shape
-'Dim ShpInd As Integer
+'Dim ShpInd As Long
 '
 ''---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
 ''    On Error GoTo Tail
@@ -522,10 +522,10 @@ End Sub
 '    Application.EventsEnabled = True
 'End Sub
 
-Public Sub MakeVHoseLine()
+Public Sub MakeVHoseLineEventsCore()
 'Метод обращения во всасывающую рукавную линию
 Dim ShpObj As Visio.Shape
-Dim ShpInd As Integer
+Dim ShpInd As Long
 
 '---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
     On Error GoTo Tail
@@ -557,10 +557,10 @@ Tail:
     Application.EventsEnabled = True
 End Sub
 
-Public Sub MakeNapVsasHoseLine()
+Public Sub MakeNapVsasHoseLineEventsCore()
 'Метод обращения в напорно-всасывающую рукавную линию
 Dim ShpObj As Visio.Shape
-Dim ShpInd As Integer
+Dim ShpInd As Long
 
 '---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
     On Error GoTo Tail
@@ -596,10 +596,10 @@ Tail:
     Application.EventsEnabled = True
 End Sub
 
-Public Sub MakeHoseLine(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
+Public Sub MakeHoseLineEventsCore(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
 'Метод обращения в рукавную линию с заданными параметрами
 'Dim ShpObj As Visio.Shape
-Dim ShpInd As Integer
+Dim ShpInd As Long
 Dim diameter As Integer
 
 '---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
@@ -628,14 +628,13 @@ Dim diameter As Integer
     '---Запускаем процедуру получения СПИСКОВ Материалов рукавов
     ShpObj.Cells("Prop.HoseMaterial.Format").FormulaU = ListImport("З_Рукава", "Материал рукава")
     '---Запускаем процедуру получения СПИСКОВ диаметров рукавов
-    HoseDiametersListImport (ShpInd)
+    HoseDiametersListImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Сопротивлений рукавов
-    HoseResistanceValueImport (ShpInd)
+    HoseResistanceValueImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Пропускной способности рукавов
-    HoseMaxFlowValueImport (ShpInd)
+    HoseMaxFlowValueImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Массы рукавов
-    HoseWeightValueImport (ShpInd)
-        
+    HoseWeightValueImport ShpInd, ShpObj
 '---Устнавливаем значения для магистральной линии
     diameter = Index(hoseDiameterIndex, ShpObj.Cells("Prop.HoseDiameter.Format").Formula, ";")
     ShpObj.Cells("Prop.HoseDiameter").FormulaU = "INDEX(" & diameter & ",Prop.HoseDiameter.Format)"
@@ -657,9 +656,9 @@ Tail:
     Application.EventsEnabled = True
 End Sub
 
-Public Sub MakeHoseDrop(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
+Public Sub MakeHoseDropEventsCore(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
 'Метод обращения в проброс рукавной линии
-Dim ShpInd As Integer
+Dim ShpInd As Long
 Dim diameter As Integer
 
 '---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
@@ -680,14 +679,13 @@ Dim diameter As Integer
     '---Запускаем процедуру получения СПИСКОВ Материалов рукавов
     ShpObj.Cells("Prop.HoseMaterial.Format").FormulaU = ListImport("З_Рукава", "Материал рукава")
     '---Запускаем процедуру получения СПИСКОВ диаметров рукавов
-    HoseDiametersListImport (ShpInd)
+    HoseDiametersListImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Сопротивлений рукавов
-    HoseResistanceValueImport (ShpInd)
+    HoseResistanceValueImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Пропускной способности рукавов
-    HoseMaxFlowValueImport (ShpInd)
+    HoseMaxFlowValueImport ShpInd, ShpObj
     '---Запускаем процедуру получения ЗНАЧЕНИЙ Массы рукавов
-    HoseWeightValueImport (ShpInd)
-        
+    HoseWeightValueImport ShpInd, ShpObj
 '---Устнавливаем значения для проброса
 '    Stop
     diameter = Index(hoseDiameterIndex, ShpObj.Cells("Prop.HoseDiameter.Format").Formula, ";")
@@ -735,7 +733,7 @@ End Sub
 'Public Sub MakeShortHoseLine()
 ''Метод обращения в Напорную линию из полурукавчиков рукавную линию
 'Dim ShpObj As Visio.Shape
-'Dim ShpInd As Integer
+'Dim ShpInd As Long
 '
 ''---Включаем обработку ошибок - для предотвращения выброса класса при попытке обращения ничего
 '    On Error GoTo Tail
@@ -781,3 +779,71 @@ End Sub
 '    Application.EventsEnabled = True
 'End Sub
 
+
+Public Sub MakeVHoseLine()
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    MakeVHoseLineEventsCore
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub
+
+Public Sub MakeNapVsasHoseLine()
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    MakeNapVsasHoseLineEventsCore
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub
+
+Public Sub MakeHoseLine(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    MakeHoseLineEventsCore ShpObj, hoseDiameterIndex, lineType
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub
+
+Public Sub MakeHoseDrop(ByRef ShpObj As Visio.Shape, ByVal hoseDiameterIndex As Integer, ByVal lineType As Byte)
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    MakeHoseDropEventsCore ShpObj, hoseDiameterIndex, lineType
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub

@@ -13,6 +13,8 @@ Attribute WaterAppEvents.VB_VarHelpID = -1
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set WaterAppEvents = Nothing
 'Процедура закрытия документа и удаления его рабочих элементов
 
 '---Очищаем объекты ButEvent и WaterAppEvents и удаляем кнопку "Обратить в естественный водоисточник" с панели управления "Превращения"
@@ -68,20 +70,20 @@ Tail:
 End Sub
 
 
-Private Sub WaterAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub WaterAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
-Dim ShpInd As Integer
+Dim ShpInd As Long
 '---Проверяем имя ячейки
 '    ShpInd = Cell.Shape.ID
     
     If cell.Name = "Prop.PipeType" Or cell.Name = "Prop.PipeDiameter" Or cell.Name = "Prop.Pressure" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения СПИСКА диаметров
-        DiametersListImport (ShpInd)
+        DiametersListImport ShpInd, cell.Shape
         '---Запускаем процедуру получения СПИСКА напоров
-        PressuresListImport (ShpInd)
+        PressuresListImport ShpInd, cell.Shape
         '---Запускаем процедуру пересчета водоотдачи
-        ProductionImport (ShpInd)
+        ProductionImport ShpInd, cell.Shape
     End If
 
 'В случае, если произошло изменение не нужной ячейки прекращаем событие
@@ -97,7 +99,8 @@ End Sub
 
 Private Sub WaterAppEvents_ShapeAdded(ByVal Shape As IVShape)
 'Событие добавления на лист фигуры
-Dim v_Cntrl As CommandBarControl
+Dim v_Ctrl As CommandBarControl
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
 
 '---Включаем обработку ошибок
     On Error GoTo Tail
@@ -153,3 +156,17 @@ End Sub
 
 
 
+
+Private Sub WaterAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    WaterAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "WaterAppEvents_CellChanged"
+    Resume EventFinished
+End Sub

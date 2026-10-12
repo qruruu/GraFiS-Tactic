@@ -64,6 +64,9 @@ End Sub
 
 '-------------------Процедуры отслеживающие соединения и выполняющие соответствующие действия------------------------------------------------------------
 Private Sub vO_App_ConnectionsAdded(ByVal Connects As IVConnects)
+    If Connects.Count = 0 Then Exit Sub
+    If Not GFSIsActiveDrawingShape(Connects.Item(1).FromSheet) Then Exit Sub
+
 'Процедура отслеживает появление соединений фигур и запускает процедуру
   
     '---Проверяем какие фигуры соединены
@@ -346,6 +349,9 @@ EX:
 End Sub
 
 Private Sub vO_App_ConnectionsDeleted(ByVal Connects As IVConnects)
+    If Connects.Count = 0 Then Exit Sub
+    If Not GFSIsActiveDrawingShape(Connects.Item(1).FromSheet) Then Exit Sub
+
 'Событие происходит в момент разъединения рукавов
 'MsgBox "Произошел разрыв соединения!"
     Ps_ConnectionDelete Connects(1)
@@ -1094,7 +1100,7 @@ End Sub
 
 Private Function IsGraFisShapes(ByRef shp1 As Visio.Shape, ByRef Shp2 As Visio.Shape) As Boolean
 'Функция возвращет Истина, если фигуры явля.тся фигурой ГраФиС
-    IsGraFisShapes = shp1.CellExists("IndexPers", 0) = 0 And Shp2.CellExists("IndexPers", 0) = 0
+    IsGraFisShapes = (shp1.CellExistsU("User.IndexPers", 0) <> 0) And (Shp2.CellExistsU("User.IndexPers", 0) <> 0)
 End Function
 
 Private Function GetOrEqual(ByVal val1 As Integer, ByVal val2 As Integer, _
@@ -1108,6 +1114,8 @@ Private Function GetOrEqual(ByVal val1 As Integer, ByVal val2 As Integer, _
 End Function
 
 Private Sub vO_App_ShapeAdded(ByVal Shape As IVShape)
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
+
 'Событие добавления новой фигуры
     '---Пытаемся обратить доавленную фигуру в рукавную линию
     TurnIntoHoses2 Shape

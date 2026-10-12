@@ -31,13 +31,14 @@ Private Sub Class_Terminate()
 End Sub
 
 Private Sub vO_App_ShapeAdded(ByVal Shape As IVShape)
+    If col_RoomsShapes Is Nothing Then Exit Sub
     col_RoomsShapes.Add Shape
 End Sub
 
 
 '-----------------------------------Основные процедуры------------------------------------------------------------------------
 
-Public Sub S_SetFullShape()
+Public Sub S_SetFullShapeEventsCore()
 'Основная процедура запуска вброса перечня рабочих мест на листе
 Dim vO_SheetShape As Visio.Shape
 
@@ -320,3 +321,20 @@ Set Shape = Nothing
 End Function
 
 
+
+Public Sub S_SetFullShape()
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    S_SetFullShapeEventsCore
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub

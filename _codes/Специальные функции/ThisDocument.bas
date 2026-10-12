@@ -53,6 +53,8 @@ ex:
 End Sub
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
 'Обрабатываем закрытие документа
 
 '---Деактивируем объект отслеживания нажатия кнопок
@@ -89,6 +91,7 @@ End Sub
 
 
 Private Sub app_CellChanged(ByVal Cell As IVCell)
+    If ButEvent Is Nothing Then Exit Sub
 '---Один раз в выполняем обновление иконок на кнопках
     cellChangedCount = cellChangedCount + 1
     If cellChangedCount > cellChangedInterval Then

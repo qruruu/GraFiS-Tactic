@@ -1,7 +1,7 @@
 Attribute VB_Name = "Tools"
 Option Explicit
 
-Public Sub GetValuesOfCellsFromTable(ShpIndex As Long, TableName As String)
+Public Sub GetValuesOfCellsFromTable(ShpIndex As Long, TableName As String, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта данных о ТТХ любой фигуры c "Набором" из базы данных Signs
 Dim dbs As Object, rsAD As Object
 Dim pth As String
@@ -14,7 +14,7 @@ Dim fieldType As Integer
     On Error GoTo Tail
 
 '---Определяем фигуру относительно которой выполняется действие
-    Set ShpObj = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set ShpObj = GFSResolveShape(ShpIndex, sourceShape)
 
 '---Определяем критерии поиска записи в наборе данных
     AirDeviceModel = ShpObj.Cells("Prop.AirDevice").ResultStr(visUnitsString)
@@ -79,7 +79,7 @@ Tail:
 End Sub
 
 
-Public Sub FogRMKGetValuesOfCellsFromTable(ShpIndex As Long, TableName As String)
+Public Sub FogRMKGetValuesOfCellsFromTable(ShpIndex As Long, TableName As String, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта данных о ТТХ дымососов
 Dim dbs As Object, rsAD As Object
 Dim pth As String
@@ -92,7 +92,7 @@ Dim fieldType As Integer
     On Error GoTo Tail
 
 '---Определяем фигуру относительно которой выполняется действие
-    Set ShpObj = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set ShpObj = GFSResolveShape(ShpIndex, sourceShape)
 
 '---Определяем критерии поиска записи в наборе данных
     FogRMKModel = ShpObj.Cells("Prop.FogRMK").ResultStr(visUnitsString)
@@ -348,23 +348,34 @@ End Function
 
 '--------------------------------Сохранение лога ошибки-------------------------------------
 Public Sub SaveLog(ByRef error As ErrObject, ByVal eroorPosition As String, Optional ByVal addition As String)
-'Прока сохранения лога программы
-Dim errString As String
-Const d = " | "
-
-'---Открываем файл лога (если его нет - создаем)
-    Open ThisDocument.path & "/Log.txt" For Append As #1
-    
-'---Формируем строку записи об ошибке (Дата | ОС | Path | APPDATA
-    errString = Now & d & Environ("OS") & d & "Visio " & Application.version & d & ThisDocument.fullName & d & eroorPosition & _
-        d & error.Number & d & error.description & d & error.Source & d & eroorPosition & d & addition
-    
-'---Записываем в конец файла лога сведения о ошибке
-    Print #1, errString
-    
-'---Закрываем фацл лога
-    Close #1
-
+    Dim logHandle As Integer
+    Dim logOpened As Boolean
+    Dim logPath As String, errString As String
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    savedNumber = error.Number
+    savedDescription = error.Description
+    savedSource = error.Source
+    On Error GoTo LogFailed
+    errString = Now & " | " & Environ$("OS") & " | Visio " & Application.Version & _
+        " | " & ThisDocument.FullName & " | " & eroorPosition & " | " & savedNumber & _
+        " | " & savedDescription & " | " & savedSource & " | " & addition
+    logPath = ThisDocument.Path
+    If Len(logPath) > 0 Then
+        If Right$(logPath, 1) <> "\" Then logPath = logPath & "\"
+    Else
+        logPath = Environ$("TEMP") & "\"
+    End If
+    logHandle = FreeFile
+    Open logPath & "Log.txt" For Append As #logHandle
+    logOpened = True
+    Print #logHandle, errString
+LogFinished:
+    On Error Resume Next
+    If logOpened Then Close #logHandle
+    Exit Sub
+LogFailed:
+    Debug.Print "GraFiS log unavailable: " & errString
+    Resume LogFinished
 End Sub
 
 '-----------------------------------------Поиск точки----------------------------------------------

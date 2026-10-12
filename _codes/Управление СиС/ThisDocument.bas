@@ -56,6 +56,8 @@ Private Sub Document_DocumentOpened(ByVal doc As IVDocument)
 End Sub
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
 '---Деактивируем автоматизатор временных свойств фигур ГраФиС
     DeActivateSequencer
 '---Скрываем панель управления РТП

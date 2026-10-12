@@ -86,7 +86,8 @@ End Function
 'End Sub
 
 
-Private Sub visApp_ShapeAdded(ByVal Shape As IVShape)
+Private Sub visApp_ShapeAddedEventsCore(ByVal Shape As IVShape)
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
 'ѕрока добавлени€ фигуры стены поверх фигуры линии
 Dim shp As Visio.Shape
 
@@ -99,7 +100,7 @@ Dim shp As Visio.Shape
 
     '---¬брасываем фигуру стены
     Application.EventsEnabled = False
-        Set shp = Application.ActivePage.Drop(wallShape, 0, 0)
+        Set shp = Shape.ContainingPage.Drop(wallShape, 0, 0)
     Application.EventsEnabled = True
 
     '---”казываем конечную и начальную точку новой стены
@@ -162,3 +163,20 @@ Private Sub wallShape_BeforeShapeDelete(ByVal Shape As IVShape)
 End Sub
 
 
+
+Private Sub visApp_ShapeAdded(ByVal Shape As IVShape)
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    visApp_ShapeAddedEventsCore Shape
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub

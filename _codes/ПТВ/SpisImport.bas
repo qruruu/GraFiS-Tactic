@@ -42,7 +42,7 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
         
         '---Добавляем ссылку на текущее время страницы
         ShpObj.Cells("Prop.SetTime").Formula = _
-            Application.ActiveDocument.DocumentSheet.Cells("User.CurrentTime").Result(visDate)
+            GFSCurrentTime(ShpObj)
     End If
 
 
@@ -85,7 +85,7 @@ Application.DoCmd (1312)
 
 End Sub
 
-Public Sub StvolModelsListImport(ShpIndex As Long)
+Public Sub StvolModelsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -95,7 +95,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -129,7 +129,7 @@ EX:
     SaveLog Err, "StvolModelsListImport"
 End Sub
 
-Public Sub WEModelsListImport(ShpIndex As Long)
+Public Sub WEModelsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -139,7 +139,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -147,7 +147,7 @@ Dim Criteria As String
         
 '---В случае, если значение поля для нового списка равно "", переводим фокус в ячейке на 0-е положение.
     If shp.Cells("Prop.WEType").ResultStr(Visio.visNone) = "" Then
-        shp.Cells("Prop.WEType").FormulaU = "INDEX(0,Prop.Model.Format)"
+        shp.Cells("Prop.WEType").FormulaU = "INDEX(0,Prop.WEType.Format)"
     End If
         
     Set shp = Nothing
@@ -158,7 +158,7 @@ EX:
     SaveLog Err, "WEModelsListImport"
 End Sub
 
-Public Sub WFModelsListImport(ShpIndex As Long)
+Public Sub WFModelsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей всасывающих сеток
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -168,7 +168,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -187,7 +187,7 @@ EX:
     SaveLog Err, "WFModelsListImport"
 End Sub
 
-Public Sub StvolFoamCreatorListImport(ShpIndex As Long)
+Public Sub StvolFoamCreatorListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта моделей стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -197,7 +197,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -231,7 +231,7 @@ End Sub
 
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub StvolVariantsListImport(ShpIndex As Long)
+Public Sub StvolVariantsListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта Вариантов стволов
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -241,7 +241,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -282,7 +282,7 @@ EX:
 End Sub
 
 
-Public Sub StvolStreamTypesListImport(ShpIndex As Long)
+Public Sub StvolStreamTypesListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта списка возможных струй для данного ствола
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -292,7 +292,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка возможных струй стволов для текущей фигуры
@@ -337,7 +337,7 @@ End Sub
 
 
 
-Public Sub StvolHeadListImport(ShpIndex As Long)
+Public Sub StvolHeadListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта списка возможных напоров для данного вида струи и ствола
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -347,7 +347,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     indexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка возможных Напоров для текущей фигуры

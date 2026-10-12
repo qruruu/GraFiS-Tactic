@@ -11,6 +11,8 @@ Dim WithEvents vdAppEvents As Visio.Application
 Attribute vdAppEvents.VB_VarHelpID = -1
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set vdAppEvents = Nothing
 'Процедура при закрытии документа
 '---Очищаем переменную приложения
 Set vdAppEvents = Nothing
@@ -44,7 +46,7 @@ Public Sub DirectApp()
 Set vdAppEvents = Visio.Application
 End Sub
 
-Private Sub vdAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub vdAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
 Dim ShpInd As Integer
 
@@ -90,4 +92,18 @@ Dim cell As Visio.cell
         docSheet.Cells("User.CurrentTime").FormulaU = "User.FireTime"
     End If
 
+End Sub
+
+Private Sub vdAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    vdAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "vdAppEvents_CellChanged"
+    Resume EventFinished
 End Sub

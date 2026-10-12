@@ -15,6 +15,8 @@ Attribute visApp.VB_VarHelpID = -1
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set visApp = Nothing
     'Удаляем ссылку на приложение
 '    Set visApp = Visio.Application
 End Sub

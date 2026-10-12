@@ -19,6 +19,7 @@ Dim WithEvents WaterAppEvents As Visio.Application
 Attribute WaterAppEvents.VB_VarHelpID = -1
 
 Private Sub app_CellChanged(ByVal Cell As IVCell)
+    If ButEventOpenWater Is Nothing Then Exit Sub
 '---Один раз в выполняем обновление иконок на кнопках
     cellChangedCount = cellChangedCount + 1
     If cellChangedCount > cellChangedInterval Then
@@ -29,10 +30,11 @@ End Sub
 
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
+    Set WaterAppEvents = Nothing
 'Процедура закрытия документа и удаления его рабочих элементов
-
-    On Error GoTo Tail
-
+    On Error Resume Next
 '---Очищаем объекты ButEvent и WaterAppEvents и удаляем кнопку "Обратить в естественный водоисточник" с панели управления "Превращения"
     Set ButEventOpenWater = Nothing
     Set WaterAppEvents = Nothing
@@ -100,9 +102,9 @@ Tail:
 End Sub
 
 
-Private Sub WaterAppEvents_CellChanged(ByVal Cell As IVCell)
+Private Sub WaterAppEvents_CellChangedCore(ByVal Cell As IVCell)
 'Процедура обновления списков в фигурах
-Dim ShpInd As Integer
+Dim ShpInd As Long
 
     On Error GoTo Tail
 
@@ -123,7 +125,6 @@ Dim ShpInd As Integer
 
 Exit Sub
 Tail:
-    MsgBox "В ходе выполнения программы произошла ошибка! Если она будет повторяться - обратитесь к разработчкиу.", , ThisDocument.Name
     SaveLog Err, "WaterAppEvents_CellChanged"
 End Sub
 
@@ -138,6 +139,7 @@ End Sub
 Private Sub WaterAppEvents_ShapeAdded(ByVal Shape As IVShape)
 'Событие добавления на лист фигуры
 Dim v_Ctrl As CommandBarControl
+    If Not GFSIsActiveDrawingShape(Shape) Then Exit Sub
 
 '---Включаем обработку ошибок
     On Error GoTo Tail
@@ -190,3 +192,17 @@ End Sub
 
 
 
+
+Private Sub WaterAppEvents_CellChanged(ByVal Cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(Cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    WaterAppEvents_CellChangedCore Cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "WaterAppEvents_CellChanged"
+    Resume EventFinished
+End Sub

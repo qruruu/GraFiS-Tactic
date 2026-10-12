@@ -11,6 +11,8 @@ Dim WithEvents PTVAppEvents As Visio.Application
 Attribute PTVAppEvents.VB_VarHelpID = -1
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set PTVAppEvents = Nothing
 'Процедура при закрытии документа
 
 '---Очищаем переменную приложения
@@ -46,9 +48,9 @@ EX:
     SaveLog Err, "Document_DocumentOpened"
 End Sub
 
-Private Sub PTVAppEvents_CellChanged(ByVal cell As IVCell)
+Private Sub PTVAppEvents_CellChangedCore(ByVal cell As IVCell)
 'Процедура обновления списков в фигурах
-Dim ShpInd As Integer
+Dim ShpInd As Long
 '---Проверяем имя ячейки
 'MsgBox Cell.Name
     
@@ -61,41 +63,39 @@ Dim ShpInd As Integer
         If cell.Shape.Cells("Prop.TTHType").ResultStr(visString) = "По модели ствола" Then
             '---Запускаем процедуру получения СПИСКОВ стволов
             If cell.Name = "Prop.TTHType" Then
-                StvolModelsListImport (ShpInd)
+                StvolModelsListImport ShpInd, cell.Shape
             End If
             
             '---Запускаем процедуру получения списков ВАРИАНТОВ стволов
             If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Then
-                StvolVariantsListImport (ShpInd)
+                StvolVariantsListImport ShpInd, cell.Shape
             End If
             
             '---Запускаем процедуру получения Кратности для пенных стволов в соответствии с его моделью
-            StvolRFImport (ShpInd)
-            
+            StvolRFImport ShpInd, cell.Shape
             '---Запускаем процедуру получения списков ВИДОВ СТРУЙ стволов
             If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Or cell.Name = "Prop.Variant" Then
-                StvolStreamTypesListImport (ShpInd)
+                StvolStreamTypesListImport ShpInd, cell.Shape
             End If
             
             '---Запускаем процедуру получения Условного прохода ствола в соответствии с его ВИДОМ СТРУИ
-            StvolDiameterInImport (ShpInd)
-            
+            StvolDiameterInImport ShpInd, cell.Shape
             '---Запускаем процедуру получения списка НАПОРОВ для данного вида струи стволов
             If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Or cell.Name = "Prop.Variant" _
                 Or cell.Name = "Prop.StreamType" Then
-                StvolHeadListImport (ShpInd)
+                StvolHeadListImport ShpInd, cell.Shape
             End If
             
             '---Запускаем процедуру получения ТИПА СТРУи ствола в соответствии с его ВИДОМ СТРУИ (компактная, распыленная или иная)
             If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Or cell.Name = "Prop.Variant" _
                 Or cell.Name = "Prop.StreamType" Then
-                StvolStreamValueImport (ShpInd)
+                StvolStreamValueImport ShpInd, cell.Shape
             End If
             
             '---Запускаем процедуру пересчета расхода воды из ствола
             If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Or cell.Name = "Prop.Variant" _
                 Or cell.Name = "Prop.StreamType" Or cell.Name = "Prop.Head" Then
-                StvolProductionImport (ShpInd)
+                StvolProductionImport ShpInd, cell.Shape
             End If
             
             
@@ -106,39 +106,38 @@ Dim ShpInd As Integer
     If cell.Name = "Prop.TTHType" Or cell.Name = "Prop.StvolType" Then
         If cell.Shape.Cells("Prop.TTHType").ResultStr(visString) = "По модели ствола" Then
             '---Запускаем проку получения ссылки на wiki-fire.org
-            StvolWFLinkImport (ShpInd)
-            StvolHeadDiapasoneImport (ShpInd)
+            StvolWFLinkImport ShpInd, cell.Shape
+            StvolHeadDiapasoneImport ShpInd, cell.Shape
         Else
-            StvolWFLinkFree (ShpInd)
+            StvolWFLinkFree ShpInd, cell.Shape
         End If
     End If
     
     If cell.Name = "Prop.WEType" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения СПИСКОВ гидроэлеваторов
-        WEModelsListImport (ShpInd)
+        WEModelsListImport ShpInd, cell.Shape
         '---Запускаем процедуру пересчета расхода воды из ствола
-        StvolProductionImport (ShpInd)
+        StvolProductionImport ShpInd, cell.Shape
     End If
     
     If cell.Name = "Prop.WFType" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру получения СПИСКОВ Всасывающих сеток
-        WFModelsListImport (ShpInd)
+        WFModelsListImport ShpInd, cell.Shape
         '---Запускаем процедуру пересчета производительности всасывающих сеток
-        StvolProductionImport (ShpInd)
+        StvolProductionImport ShpInd, cell.Shape
     End If
     
     If cell.Name = "Prop.ColPressure" Or cell.Name = "Prop.Patr" Then
         ShpInd = cell.Shape.ID
         '---Запускаем процедуру пересчета производительности колонок
-        ColFlowMaxImport (ShpInd)
+        ColFlowMaxImport ShpInd, cell.Shape
     End If
     
 'В случае, если произошло изменение не нужной ячейки прекращаем событие
 Exit Sub
 Tail:
-    MsgBox "В ходе выполнения программы произошла ошибка! Если она будет повторяться - обратитесь к разработчкиу.", , ThisDocument.Name
     SaveLog Err, "PTVAppEvents_CellChanged"
 End Sub
 
@@ -169,3 +168,17 @@ End Sub
 '============
 'Код для показа мастера:
 'ThisDocument.Masters("Гидроабразивный ствол").Hidden = False
+
+Private Sub PTVAppEvents_CellChanged(ByVal cell As IVCell)
+    Dim eventKey As String
+    On Error GoTo EventFailed
+    eventKey = GFSBeginCellEvent(cell)
+    If Len(eventKey) = 0 Then Exit Sub
+    PTVAppEvents_CellChangedCore cell
+EventFinished:
+    GFSEndCellEvent eventKey
+    Exit Sub
+EventFailed:
+    SaveLog Err, "PTVAppEvents_CellChanged"
+    Resume EventFinished
+End Sub

@@ -10,19 +10,18 @@ Public Sub BaseListsRefresh(ShpObj As Visio.Shape)
     
 '---Обновляем список моделей и их ТТХ
     '---Запускаем процедуру получения СПИСКА диаметров
-    DiametersListImport (ShpObj.ID)
+    DiametersListImport ShpObj.ID, ShpObj
     '---Запускаем процедуру получения СПИСКА напоров
-    PressuresListImport (ShpObj.ID)
+    PressuresListImport ShpObj.ID, ShpObj
     '---Запускаем процедуру пересчета водоотдачи
-    ProductionImport (ShpObj.ID)
-
+    ProductionImport ShpObj.ID, ShpObj
 On Error Resume Next 'НЕ ЗАБЫТЬ ЧТО ВКЛЮЧЕН ОБРАБОТЧИК ОШБИКИ
 Application.DoCmd (1312)
 
 End Sub
 
 '------------------------Блок зависимых списков------------------------------
-Public Sub DiametersListImport(ShpIndex As Long)
+Public Sub DiametersListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта списков диаметров
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -32,7 +31,7 @@ Dim Criteria As String
     On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка Модели стволов для текущей фигуры
@@ -56,7 +55,7 @@ EX:
 End Sub
 
 
-Public Sub PressuresListImport(ShpIndex As Long)
+Public Sub PressuresListImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура импорта списка возможных напоров для заданных условий
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -66,7 +65,7 @@ Dim Criteria As String
 On Error GoTo EX
 
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения относительного списка возможных струй стволов для текущей фигуры

@@ -1,7 +1,7 @@
 Attribute VB_Name = "ValueImportModule"
 '------------------------Модуль для процедур импорта значений ячеек-------------------
 '------------------------Блок Значений ячеек------------------------------------------
-Public Sub ProductionImport(ShpIndex As Long)
+Public Sub ProductionImport(ShpIndex As Long, Optional ByVal sourceShape As Visio.Shape = Nothing)
 'Процедура возвращающая и присваивающая ячейке Водоотдача в соответсвии с видом водовода и напором
 '---Объявляем переменные
 Dim shp As Visio.Shape
@@ -10,7 +10,7 @@ Dim Criteria As String
 
     On Error GoTo EX
 '---Проверяем к какой именно фигуре относится данная ячейка
-    Set shp = Application.ActivePage.Shapes.ItemFromID(ShpIndex)
+    Set shp = GFSResolveShape(ShpIndex, sourceShape)
     IndexPers = shp.Cells("User.IndexPers")
 
 '---Запускаем процедуру получения Типа струи при заданном Виде струи для текущей фигуры

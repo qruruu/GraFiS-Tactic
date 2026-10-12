@@ -31,6 +31,9 @@ EX:
 End Sub
 
 Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    Set app = Nothing
+    Set SquareAppEvents = Nothing
     EndAction
 End Sub
 

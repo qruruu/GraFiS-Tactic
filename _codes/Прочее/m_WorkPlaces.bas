@@ -48,7 +48,7 @@ Dim i As Integer
 End Sub
 
 '-----------------------------------Вставка экспликаций-----------------------------------------
-Public Sub PS_AddExplicationTable(ShpObj As Visio.Shape)
+Public Sub PS_AddExplicationTableEventsCore(ShpObj As Visio.Shape)
 'Прока добавляет таблицу экспликации
 Dim vO_Shape As Visio.Shape
 Dim vO_NewString As Visio.Shape
@@ -152,3 +152,20 @@ End Sub
 
 
 
+
+Public Sub PS_AddExplicationTable(ShpObj As Visio.Shape)
+    Dim wasEventsEnabled As Boolean
+    Dim savedNumber As Long, savedDescription As String, savedSource As String
+    wasEventsEnabled = Application.EventsEnabled
+    On Error GoTo EventsFailed
+    PS_AddExplicationTableEventsCore ShpObj
+EventsFinished:
+    Application.EventsEnabled = wasEventsEnabled
+    If savedNumber <> 0 Then Err.Raise savedNumber, savedSource, savedDescription
+    Exit Sub
+EventsFailed:
+    savedNumber = Err.Number
+    savedDescription = Err.Description
+    savedSource = Err.Source
+    Resume EventsFinished
+End Sub
