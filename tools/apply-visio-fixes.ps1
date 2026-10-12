@@ -60,7 +60,7 @@ try {
                 $cm = $component.CodeModule
                 $currentCode = if ($cm.CountOfLines -gt 0) { $cm.Lines(1, $cm.CountOfLines) } else { '' }
                 $currentHash = Get-CodeHash $currentCode
-                if ($currentHash -ne $module.original_hash -and $currentHash -ne $module.new_hash) {
+                if ($currentHash -ne $module.original_hash -and $currentHash -ne $module.new_hash -and $currentHash -notin $module.accepted_previous_hashes) {
                     throw "Source version differs: $($project.stencil) / $($module.name). No changes have been made."
                 }
             }
@@ -87,7 +87,7 @@ try {
                 if ($candidate.Name -eq $module.name) { $component = $candidate; break }
             }
             if ($null -eq $component) {
-                $component = $components.Add(1) # Standard module only; preserve class/form designers.
+                $component = $components.Add([int]$module.component_type) # New standard modules/classes only; preserve existing designers.
                 $component.Name = $module.name
             }
             $code = Get-SourceCode (Join-Path $PackageDirectory $module.path) $module.encoding

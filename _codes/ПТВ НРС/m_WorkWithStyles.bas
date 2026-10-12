@@ -24,6 +24,7 @@ Public Sub StyleExport()
 Dim vO_Doc As Visio.Document
 Dim vO_Stl As Visio.style
 Dim i As Integer
+    If Not GFSHasEditableDrawing() Then Exit Sub
 
 '---Создаем набор названий стилей
     s_StyleSetsDeclare
@@ -57,6 +58,7 @@ Private Sub StyleRefresh(as_StyleName As String)
 Dim vO_StyleFrom As Visio.style
 Dim vO_StyleTo As Visio.style
 Dim vs_RowName As String
+    If Not GFSHasEditableDrawing() Then Exit Sub
 
     On Error GoTo EX
 

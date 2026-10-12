@@ -13,7 +13,10 @@ Dim WithEvents LineAppEvents As Visio.Application
 Attribute LineAppEvents.VB_VarHelpID = -1
 
 
-Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+Private WithEvents gfsSession As c_GFSStencilSession
+Private gfsUIReady As Boolean
+
+Private Sub GFSCloseCore(ByVal doc As IVDocument)
     On Error Resume Next
     Set LineAppEvents = Nothing
     Set C_ConnectionsTrace = Nothing
@@ -39,7 +42,8 @@ Set C_ConnectionsTrace = Nothing
 End Sub
 
 
-Private Sub Document_DocumentOpened(ByVal doc As IVDocument)
+Private Sub GFSOpenedCore(ByVal doc As IVDocument)
+    If Not GFSHasEditableDrawing() Then Exit Sub
 
 '    On Error GoTo ex
 '---Показываем окно свойств
@@ -127,6 +131,7 @@ End Sub
 
 
 Private Sub sp_MastersImport()
+    If Not GFSHasEditableDrawing() Then Exit Sub
 '---Импортируем мастера
 
     MasterImportSub "Линии НРС.vss", "ВсасывающийРукав"
@@ -137,6 +142,7 @@ End Sub
 
 
 Private Sub sm_AddFireTime()
+    If Not GFSHasEditableDrawing() Then Exit Sub
 'Процедура добавляет в документ свойство - время начала пожара, в случае его отсутствия
 
     If Application.ActiveDocument.DocumentSheet.CellExists("User.FireTime", 0) = False Then
@@ -203,6 +209,7 @@ Private Sub AddTimeUserCells()
 'Прока добавляет ячейки "User.FireTime", "User.CurrentTime"
 Dim docSheet As Visio.Shape
 Dim cell As Visio.cell
+    If Not GFSHasEditableDrawing() Then Exit Sub
 
     Set docSheet = Application.ActiveDocument.DocumentSheet
     
@@ -229,4 +236,60 @@ EventFinished:
 EventFailed:
     SaveLog Err, "LineAppEvents_CellChanged"
     Resume EventFinished
+End Sub
+
+Private Sub Document_DocumentOpened(ByVal doc As IVDocument)
+    On Error GoTo Failed
+    Set gfsSession = New c_GFSStencilSession
+    gfsSession.Start ThisDocument
+    Exit Sub
+Failed:
+    Debug.Print "GraFiS startup: " & Err.Number & " " & Err.Description
+End Sub
+
+Private Sub gfsSession_DrawingReady(ByVal drawingWindow As Visio.Window)
+    Dim drawing As Visio.Document
+    On Error GoTo Failed
+    Set drawing = drawingWindow.Document
+    If drawing.Type <> visTypeDrawing Then Exit Sub
+    If drawing.ReadOnly Then Exit Sub
+    drawingWindow.Activate
+    If Not (Application.ActiveDocument Is drawing) Then Exit Sub
+    If Not gfsUIReady Then
+        GFSOpenedCore ThisDocument
+        gfsUIReady = True
+    End If
+    GFSPrepareDrawing drawing
+    Exit Sub
+Failed:
+    Err.Raise Err.Number, "GraFiS drawing initialization", Err.Description
+End Sub
+
+Private Sub GFSPrepareDrawing(ByVal drawing As Visio.Document)
+    If drawing Is Nothing Then Exit Sub
+    If drawing.Type <> visTypeDrawing Then Exit Sub
+    If drawing.ReadOnly Then Exit Sub
+    If Not (Application.ActiveDocument Is drawing) Then Exit Sub
+    AddTimeUserCells
+    sp_MastersImport
+    sm_AddFireTime
+    If drawing.DocumentSheet.CellExistsU("User.GFSColorTheme", 0) = 0 Then
+        StyleExport
+    End If
+    If Not Application.ActivePage.PageSheet.CellExistsU("User.GFS_Aspect", 0) Then
+        Application.ActivePage.PageSheet.AddNamedRow visSectionUser, "GFS_Aspect", visTagDefault
+        Application.ActivePage.PageSheet.CellsU("User.GFS_Aspect").FormulaU = "1"
+    End If
+    drawing.GlueSettings = visGlueToGeometry + visGlueToGuides + visGlueToConnectionPoints + visGlueToVertices
+End Sub
+
+Private Sub Document_BeforeDocumentClose(ByVal doc As IVDocument)
+    On Error Resume Next
+    GFSCloseCore doc
+    If Not gfsSession Is Nothing Then
+        gfsSession.MarkRuntimeClean
+        gfsSession.Stop
+    End If
+    Set gfsSession = Nothing
+    gfsUIReady = False
 End Sub

@@ -13,7 +13,7 @@ for project,modules in projects.items():
  helper=project/'m_GFSSafety.bas'
  for p in modules:
   s=read(p)
-  if re.search(r'\bGFS(?:ResolveShape|BeginCellEvent|EndCellEvent|CurrentTime|IsActiveDrawingShape)\s*\(?',s) and not helper.exists():issues.append(f'{p}: missing safety helper')
+  if re.search(r'\bGFS(?:ResolveShape|BeginCellEvent|EndCellEvent|CurrentTime|IsActiveDrawingShape|HasEditableDrawing)\s*\(?',s) and not helper.exists():issues.append(f'{p}: missing safety helper')
   if p.name=='ThisDocument.bas':
    for m in re.finditer(r'(?im)^Private Sub \w+_CellChangedCore\([^\n]*\)(.*?)(?=^End Sub)',s,re.S):
     if re.search(r'(?im)^\s*\w+Import\s*\(ShpInd\)',m[1]):issues.append(f'{p}: event still passes ID without source context')
@@ -32,6 +32,21 @@ for project,modules in projects.items():
 # Cross-project helper copies must be identical.
 helpers=list((ROOT/'_codes').rglob('m_GFSSafety.bas'))
 if len({p.read_bytes() for p in helpers})!=1:issues.append('Safety helpers diverged across projects')
+# Every lifecycle consumer must ship its own class; classes stay identical.
+sessions=list((ROOT/'_codes').rglob('c_GFSStencilSession.cls'))
+if len(sessions)!=32 or len({p.read_bytes() for p in sessions})!=1:issues.append('Stencil controllers missing or diverged')
+for session in sessions:
+ doc=session.parent/'ThisDocument.bas'
+ text=read(doc)
+ for token in ('Private WithEvents gfsSession As c_GFSStencilSession', 'gfsSession.Start ThisDocument', 'gfsSession.Stop', 'Private Sub GFSPrepareDrawing'):
+  if token not in text:issues.append(f'{doc}: missing lifecycle {token}')
+ # No generic suppression of drawing save prompts in the lifecycle class.
+ body=read(session)
+ if 'owner.Type <> visTypeStencil' not in body or 'Not owner.ReadOnly' not in body or 'Not initiallySaved' not in body:issues.append(f'{session}: unsafe saved-state cleanup')
+ if 'AlertResponse' in body:issues.append(f'{session}: global prompts suppression')
+ for name in ('GFSOpenedCore','AddTimeUserCells','sm_AddFireTime','StartAction','OpenDoc','MastersImport','sp_MastersImport'):
+  match=re.search(r'(?im)^(?:Public |Private )?Sub '+name+r'\([^\n]*\)(.*?)(?=^End Sub)',text,re.S)
+  if match and 'If Not GFSHasEditableDrawing() Then Exit Sub' not in match[1]:issues.append(f'{doc}: unguarded initializer {name}')
 # Catch changed modules with missing module headers / accidental null bytes.
 changed=subprocess.check_output(['git','diff','HEAD','--name-only','-z'],cwd=ROOT).decode().split('\0')
 for rel in filter(None,changed):

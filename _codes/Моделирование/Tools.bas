@@ -106,6 +106,7 @@ End Function
 Public Sub MasterImportSub(ByVal MasterName As String)
 'Процедура импорта мастера в соответствии с именем
 Dim mstr As Visio.Master
+    If Not GFSHasEditableDrawing() Then Exit Sub
 
     If Not CD_MasterExists(MasterName) Then
         Set mstr = ThisDocument.Masters(MasterName)

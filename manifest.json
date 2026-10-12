@@ -2,6 +2,80 @@
   "base_commit": "a2cce2c9f369426f283c6c6db17ba9c828f60f01",
   "projects": [
     {
+      "stencil": "Авиация.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Авиация/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Авиация/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Авиация/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        }
+      ]
+    },
+    {
+      "stencil": "Автотехника.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Автотехника/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Автотехника/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Автотехника/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        }
+      ]
+    },
+    {
       "stencil": "Водоснабжение НРС.vss",
       "modules": [
         {
@@ -10,7 +84,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "e8e4b8305857fd242195719ce4b27c63b4b3e4b93ca31b87b3b58975050aec6c",
-          "new_hash": "08fc7d26b0f6e0af4b02847a67fec28e605c769f2783e22a6784ea40f5901615"
+          "new_hash": "08fc7d26b0f6e0af4b02847a67fec28e605c769f2783e22a6784ea40f5901615",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "08fc7d26b0f6e0af4b02847a67fec28e605c769f2783e22a6784ea40f5901615"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -18,7 +96,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "45f53835fd8b0f7f0b94c06bd07eecf5b2787dd49992681ec2a092a0a3bf6b10",
-          "new_hash": "796dfd95b3c18dfcd892ef04b60b19d01bbe6a0b4b93296e29c7aa72d33461b8"
+          "new_hash": "d1f768f37c0108e475af2e6f208896ef5d8a00f8b93b9e768ca26ddbb3449097",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "796dfd95b3c18dfcd892ef04b60b19d01bbe6a0b4b93296e29c7aa72d33461b8"
+          ]
         },
         {
           "name": "Tools",
@@ -26,7 +108,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "a1d1a186582e5ef89bedc6dd2278e0575b433bf868a6a798327f9a7b15254eb8",
-          "new_hash": "e39e23812ed6cd3ccd4b65a804718a6f8782f0392f3e3dbb66fd2e8f8961f2de"
+          "new_hash": "018b35a0aaaa67cb6df8f0407a8b462718742195af0c1192d8ea3ee9428409d6",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e39e23812ed6cd3ccd4b65a804718a6f8782f0392f3e3dbb66fd2e8f8961f2de"
+          ]
         },
         {
           "name": "ValueImportModule",
@@ -34,7 +120,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "7c1a2760f3eb84926886b18b4ef593e832e132d45e570557ad8c1a31a2b07f65",
-          "new_hash": "fc900019f45e035491a7d53c9287f1e8ce347ef5c45bc38e91a1c59557580455"
+          "new_hash": "fc900019f45e035491a7d53c9287f1e8ce347ef5c45bc38e91a1c59557580455",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "fc900019f45e035491a7d53c9287f1e8ce347ef5c45bc38e91a1c59557580455"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Водоснабжение НРС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -42,7 +142,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Водоснабжение НРС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "a5681e310fea3b94618c4d495ee66d750f763fa46a72cfeffaa012d6cf66c912",
+          "new_hash": "2aff65813d6e4fd240d975dbe7e1f5263882ad1cbd7dfcd890b345b0fb82f366",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "a5681e310fea3b94618c4d495ee66d750f763fa46a72cfeffaa012d6cf66c912"
+          ]
         }
       ]
     },
@@ -55,7 +171,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "7e8102296a07958f598b66f406b10d2628f2045a23a9a738016b89b55ba98301",
-          "new_hash": "86c3d8fe894be8fafd16ce3797630537f1ea24d38a038b78427df9a1fb57832c"
+          "new_hash": "8411c7a04f888f46569bf70e6c1cebc0f08f5d0333d47773c937ece3f74c1918",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "86c3d8fe894be8fafd16ce3797630537f1ea24d38a038b78427df9a1fb57832c"
+          ]
         },
         {
           "name": "Tools",
@@ -63,7 +183,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "38ace8536bca06630aec99c4878be1188bb8c38d2ebacb3404c2e442887770a3",
-          "new_hash": "516134db416dc4219e9df9dc3c666f26fe1201512e7c2c76be4b53218d43c8ee"
+          "new_hash": "3e297dda9aec60b90000fc1cff43cf0991eb72778ab6db13549e64ca0442cc6d",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "516134db416dc4219e9df9dc3c666f26fe1201512e7c2c76be4b53218d43c8ee"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Водоснабжение/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -71,7 +205,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Водоснабжение/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "d754f480ac2e3baa7cff0a0bded451c77677647a38ed911ffea4ba7c2a3d62b2",
+          "new_hash": "338ff377348ca670cb7a09e389b270f04df5a30070d4fcf3c71db07626bc7212",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "d754f480ac2e3baa7cff0a0bded451c77677647a38ed911ffea4ba7c2a3d62b2"
+          ]
         }
       ]
     },
@@ -84,7 +234,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "0788eed2fb73860ab2adaf95b4a46dfbd2ef4931f7edd3e56c49ebd175bcba47",
-          "new_hash": "b4b5a2869e5786f2cf1c28f774041a9714a252afd160344b977c0c2e3d448493"
+          "new_hash": "b4b5a2869e5786f2cf1c28f774041a9714a252afd160344b977c0c2e3d448493",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "b4b5a2869e5786f2cf1c28f774041a9714a252afd160344b977c0c2e3d448493"
+          ]
         },
         {
           "name": "SpisImport",
@@ -92,7 +246,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9ed8b1c2c44afc545abedac9287ec4df7522f388e201342b7dba15af444d73ac",
-          "new_hash": "04defcd2f593fb49ee22f851af29396c222c357a5e0468f8943eb637d8532644"
+          "new_hash": "04defcd2f593fb49ee22f851af29396c222c357a5e0468f8943eb637d8532644",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "04defcd2f593fb49ee22f851af29396c222c357a5e0468f8943eb637d8532644"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -100,7 +258,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "66660f8049e2ca237f7303c68629a4cf45866f77f7140114d4061cc99ce8e1d4",
-          "new_hash": "8696d4a00a5d30457ad4c9c20d94bcb242f6ca7f979e02c911db433e236ed1c2"
+          "new_hash": "c7f413ed426315986aeebb98369d5cb288cd2b152e9e207167dd82a490a9f626",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "8696d4a00a5d30457ad4c9c20d94bcb242f6ca7f979e02c911db433e236ed1c2"
+          ]
         },
         {
           "name": "Tools",
@@ -108,7 +270,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "cff0b4a4689010c26c6290fa7266da989f383d5ea06a9a598952b4b1d126ec6f",
-          "new_hash": "5d9f984cf4bd041ec0a03a855d981af05320bafc6bb7c84c3dcb6bb5f39dc7ab"
+          "new_hash": "5d9f984cf4bd041ec0a03a855d981af05320bafc6bb7c84c3dcb6bb5f39dc7ab",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "5d9f984cf4bd041ec0a03a855d981af05320bafc6bb7c84c3dcb6bb5f39dc7ab"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/ГДЗС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -116,7 +292,60 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/ГДЗС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "c9a4d4546b289f70543b55848f0d570b604a1959514b6e2b561214a87a362102",
+          "new_hash": "f38de94bcdef88cbb43544cc6d3c84a2fb3235e2aac5a76a6c8a50d72eb4a2fa",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "c9a4d4546b289f70543b55848f0d570b604a1959514b6e2b561214a87a362102"
+          ]
+        }
+      ]
+    },
+    {
+      "stencil": "Железная дорога.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Железная дорога/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Железная дорога/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Железная дорога/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -124,12 +353,36 @@
       "stencil": "ИИ.vss",
       "modules": [
         {
+          "name": "ThisDocument",
+          "path": "_codes/ИИ/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "4c3582d5012570e5a7bd2ab55b2ea1b02daa180e8cd2d9a08876f8a120dd0023",
+          "new_hash": "cafe57f7f735c94c6119f2313a8e418edaf08666199481610984e122825fd900",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/ИИ/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
           "name": "clsHarness",
           "path": "_codes/ИИ/clsHarness.cls",
           "encoding": "utf-8",
           "is_new": false,
           "original_hash": "7ef556ba4ba8084c227b07ff550ad9f8659ff3f12c25595ee734e1b6741ace89",
-          "new_hash": "be2200da0468cee8dce2f20a91c4892fc645253c026160e297768ba14e48c55f"
+          "new_hash": "be2200da0468cee8dce2f20a91c4892fc645253c026160e297768ba14e48c55f",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "be2200da0468cee8dce2f20a91c4892fc645253c026160e297768ba14e48c55f"
+          ]
         },
         {
           "name": "clsHarnessToolsHandler",
@@ -137,7 +390,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "2adb498e531b9be9fbe0cbc716dd153d3e89faaf8bbdab67a23b3c26b8763096",
-          "new_hash": "d349b8f24a3d86b13270d3a47a9ca9b6ebe7d6134f2bcff33404988a62d225b9"
+          "new_hash": "d349b8f24a3d86b13270d3a47a9ca9b6ebe7d6134f2bcff33404988a62d225b9",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "d349b8f24a3d86b13270d3a47a9ca9b6ebe7d6134f2bcff33404988a62d225b9"
+          ]
         },
         {
           "name": "gfs_m_Model",
@@ -145,7 +402,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "848bd944ba2ff2ff464497d92dd28a165f2db343dfd65438eead8bb7bb6b7728",
-          "new_hash": "a9aac1061d08bb90ad7ecf42ce865d09fc6ecc59d7b6b5043e95ec3990e40620"
+          "new_hash": "a9aac1061d08bb90ad7ecf42ce865d09fc6ecc59d7b6b5043e95ec3990e40620",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "a9aac1061d08bb90ad7ecf42ce865d09fc6ecc59d7b6b5043e95ec3990e40620"
+          ]
         },
         {
           "name": "gfs_t_Tools",
@@ -153,7 +414,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "d67317d163932637adc30a9d9f8e98f0c3f2f6c47838388c43243b7bd11eba1c",
-          "new_hash": "5cea879b2fa8b224c3e33b3517a5a32f5ba28b4f64514cfc16ccac4c9367a96b"
+          "new_hash": "5cea879b2fa8b224c3e33b3517a5a32f5ba28b4f64514cfc16ccac4c9367a96b",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "5cea879b2fa8b224c3e33b3517a5a32f5ba28b4f64514cfc16ccac4c9367a96b"
+          ]
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/ИИ/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -166,7 +441,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "0d8dfa194a7336cffda1669d5293adbf378adab083f09c85cd036de22ac8ecb7",
-          "new_hash": "daaa3aa524461e15d2a9d48618c9888d349ac2dcbb835a3f6aabd6d673678233"
+          "new_hash": "c6e09b83a28cf21077742965ac724f739a8bad453b0f44641edd710cee74a69f",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "daaa3aa524461e15d2a9d48618c9888d349ac2dcbb835a3f6aabd6d673678233"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Конструкции/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "c_WallDrawer",
@@ -174,7 +463,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "8c26f8855d5abdf4f62c6a06e5623e23fc2f39fff06a8fd75dfb221f0ca5c160",
-          "new_hash": "bbba222c2d5ab16ae7a30c049b8a26bbab8f8f672adcac2324698bd17eaa735d"
+          "new_hash": "bbba222c2d5ab16ae7a30c049b8a26bbab8f8f672adcac2324698bd17eaa735d",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "bbba222c2d5ab16ae7a30c049b8a26bbab8f8f672adcac2324698bd17eaa735d"
+          ]
         },
         {
           "name": "m_GFSSafety",
@@ -182,7 +475,11 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
         },
         {
           "name": "m_Tools",
@@ -190,7 +487,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "499e81127e25a21665667aa1bb9b82f9e2c72027771fdd8475414c015624f24b",
-          "new_hash": "aae32d26a7b0de27811fc4803e629f02bef897d59bde1a58f56ec6dbb52126c0"
+          "new_hash": "7904f63e251ac906c9e144d726b033cdffc5050fd327a972cab4d76c1a4c1c2e",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "aae32d26a7b0de27811fc4803e629f02bef897d59bde1a58f56ec6dbb52126c0"
+          ]
         }
       ]
     },
@@ -203,7 +504,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9c545b2d8c521404094b5bc18e320f10fdf6eebf709aefb0385a958feba28b3d",
-          "new_hash": "c68296b565fe34dcf3a7c3d2b307faeb153d4fe0fc0dc649688fbfd6e7404bde"
+          "new_hash": "c68296b565fe34dcf3a7c3d2b307faeb153d4fe0fc0dc649688fbfd6e7404bde",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "c68296b565fe34dcf3a7c3d2b307faeb153d4fe0fc0dc649688fbfd6e7404bde"
+          ]
         },
         {
           "name": "SpisImport",
@@ -211,7 +516,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "788e03a9bd1e38ce8108b394de5c95d6c0105787c602988215acced1a5c71863",
-          "new_hash": "a5c3a6884a97c58319b057e1bff096afafe1bdd681bd239c8c1fd15d88deae11"
+          "new_hash": "a5c3a6884a97c58319b057e1bff096afafe1bdd681bd239c8c1fd15d88deae11",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "a5c3a6884a97c58319b057e1bff096afafe1bdd681bd239c8c1fd15d88deae11"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -219,7 +528,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "c3d98aaf41b08ec148bbd2bfeb972f475cf18cc09195fb3540d7e17adf7da2cf",
-          "new_hash": "cf528bdc0b4828f10cbe3148f5132ff5419395a9d7750e0708c777125c3af7e1"
+          "new_hash": "ac58a89a84df8dcc3d9c51ad60d23bc8e2d2a337c6a6baeb02a6667941300781",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "cf528bdc0b4828f10cbe3148f5132ff5419395a9d7750e0708c777125c3af7e1"
+          ]
         },
         {
           "name": "Tools",
@@ -227,7 +540,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "f94e6d7a7575ad6014475baef1764d0f2618937e7ee60be37c144f6d85cef2fd",
-          "new_hash": "c18fd51b04e2580342d1ab125a805967c10b9df824cf57676363b46cb6332b2a"
+          "new_hash": "24cee6df3859fecf47e1856afe65b6f9247152bdee5d117efd1704e7d3e939a5",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "c18fd51b04e2580342d1ab125a805967c10b9df824cf57676363b46cb6332b2a"
+          ]
         },
         {
           "name": "ValueImport",
@@ -235,7 +552,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9d75b4288f548e5d8b6ae218eebb5354d2911a68bcc4c78d8c6dc1003435904b",
-          "new_hash": "f468c2bed41869f5cbd7ad858433e26e5ed50d778dc6ae6420b3ab7cb405f5f8"
+          "new_hash": "f468c2bed41869f5cbd7ad858433e26e5ed50d778dc6ae6420b3ab7cb405f5f8",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "f468c2bed41869f5cbd7ad858433e26e5ed50d778dc6ae6420b3ab7cb405f5f8"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Линии НРС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "c_HoseConnector",
@@ -243,7 +574,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "edc4887eab8c9382c362fb1185b272e89d9c5657380f8e60d2bf03976ee00ee6",
-          "new_hash": "f6430fa7bb61cc7da5bc38edbc51e0773e1d9524fbe19d53c0460d3ff4f0113a"
+          "new_hash": "f6430fa7bb61cc7da5bc38edbc51e0773e1d9524fbe19d53c0460d3ff4f0113a",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "f6430fa7bb61cc7da5bc38edbc51e0773e1d9524fbe19d53c0460d3ff4f0113a"
+          ]
         },
         {
           "name": "m_GFSSafety",
@@ -251,7 +586,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Линии НРС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "10bd781f1652fed20e227d326e076b19c9f6644f21360a4bed5a79350028220a",
+          "new_hash": "533252a42556c84ccecee8fe825b590ab6929269042383e10eb73d8161a09c3f",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "10bd781f1652fed20e227d326e076b19c9f6644f21360a4bed5a79350028220a"
+          ]
         }
       ]
     },
@@ -264,7 +615,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "67f04613eef3ed0795a415017b832d05170bba0c2809d0474e37fe1d4d63d4ec",
-          "new_hash": "def83e0bdec45004c7a5c756faac7cb749bfd91db8f64b71eea99d733a9de377"
+          "new_hash": "def83e0bdec45004c7a5c756faac7cb749bfd91db8f64b71eea99d733a9de377",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "def83e0bdec45004c7a5c756faac7cb749bfd91db8f64b71eea99d733a9de377"
+          ]
         },
         {
           "name": "SpisImport",
@@ -272,7 +627,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "267be53ceb1b388afcba88d0cf53a59bcc34d1c1db285a5221b582a87536c110",
-          "new_hash": "33f3c4f95b707ab45559421221207a2ae78a60bca5699a247ec872ec170a276f"
+          "new_hash": "33f3c4f95b707ab45559421221207a2ae78a60bca5699a247ec872ec170a276f",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "33f3c4f95b707ab45559421221207a2ae78a60bca5699a247ec872ec170a276f"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -280,7 +639,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9d03ee50e9975b33e67014b84a327e4134dfc4e15cf93f9ef9fa2c41c0e305a9",
-          "new_hash": "ac0dd0acd9d835c6e3b7e2a7bf73e1179dda856332c12268697cf137da4749c9"
+          "new_hash": "0a801ccba6ab6f1c8210dcdbf10a4dd76925332b5b22e24a4170924e21364952",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ac0dd0acd9d835c6e3b7e2a7bf73e1179dda856332c12268697cf137da4749c9"
+          ]
         },
         {
           "name": "Tools",
@@ -288,7 +651,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "5786ff63aa3b1f8b7cf7f27c2fe49919e450308070a600db38746ea2bf687035",
-          "new_hash": "d89c7971fe0e168133a8583decdab83f04002ac39ae3ceb32725da9b35bff64f"
+          "new_hash": "1276796f19489d47bbf8f81194aab3c8473295671868aa85e5a949f75b0c494d",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "d89c7971fe0e168133a8583decdab83f04002ac39ae3ceb32725da9b35bff64f"
+          ]
         },
         {
           "name": "ValueImport",
@@ -296,7 +663,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "fd3f1d707805057ed37eaf6a0f833859f1ff7bd9c8140780fb99c399d9d0ac7e",
-          "new_hash": "dec43010e05b595923cbc9b6159f8923488da82239d823363a0b034f0d8b69f9"
+          "new_hash": "dec43010e05b595923cbc9b6159f8923488da82239d823363a0b034f0d8b69f9",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "dec43010e05b595923cbc9b6159f8923488da82239d823363a0b034f0d8b69f9"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Линии/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "c_HoseConnector",
@@ -304,7 +685,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "2f211cb9bdd6b9d922c845e4f04448108b1fcc860e7a1590e0ab1e158758c7c6",
-          "new_hash": "7a8ec277a1e87d802d9c9b9393314f8f68c5cc4eb5f367f5524cb64375fbc650"
+          "new_hash": "7a8ec277a1e87d802d9c9b9393314f8f68c5cc4eb5f367f5524cb64375fbc650",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "7a8ec277a1e87d802d9c9b9393314f8f68c5cc4eb5f367f5524cb64375fbc650"
+          ]
         },
         {
           "name": "m_GFSSafety",
@@ -312,7 +697,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Линии/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "163ba52e7d551d26c057d67c2a211bf7609ce9891453cbcf28791b093faa7f1e",
+          "new_hash": "8451f8061fcc925aae31a61171743f5375d4a0119ab43d50b2828c8baf7dc829",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "163ba52e7d551d26c057d67c2a211bf7609ce9891453cbcf28791b093faa7f1e"
+          ]
         }
       ]
     },
@@ -325,7 +726,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "dd45bb40e37d361e8809bceed7322862630ee6c0bd870a7bc526ef2d385db93a",
-          "new_hash": "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c"
+          "new_hash": "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -333,7 +738,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "aa868d6db65c8c264a2149c6a23b43231c781f002f0e8979b6908caeb3a6d0b8",
-          "new_hash": "166c4d623655d69131e2b67a1a3ced938670fb0ad15f758cd370911b4146462b"
+          "new_hash": "c95478788daf4977528f651daa715f624214874b4ea66a50fc3b2469fe8228ee",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "166c4d623655d69131e2b67a1a3ced938670fb0ad15f758cd370911b4146462b"
+          ]
         },
         {
           "name": "Tools",
@@ -341,7 +750,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "20afa5999b243d5ccaaa731a3778e0db19262a1de7313e5f0eb153b488be7c0b",
-          "new_hash": "06e2729b45cb504bd945135bad9597400cbd60388858d6a18a24d684c9137f3b"
+          "new_hash": "15c7b72def36f7d8941b022ee7aeda24e7b57258f56b612f13daa5d47cb46efe",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "06e2729b45cb504bd945135bad9597400cbd60388858d6a18a24d684c9137f3b"
+          ]
         },
         {
           "name": "ValueImport",
@@ -349,7 +762,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "81d9e54550ddff83577d80f22d7cd43a2d947a23c75b183e36f34022792cf169",
-          "new_hash": "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27"
+          "new_hash": "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Моделирование/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -357,7 +784,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Моделирование/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "b6fa3ba05e25e02a4f264583b23b37e8832a2248970e0078d9285e45883fadc5",
+          "new_hash": "2a9cac98f2faa5f65150a332190c5328ec453283931274692a35fdffea21f93c",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "b6fa3ba05e25e02a4f264583b23b37e8832a2248970e0078d9285e45883fadc5"
+          ]
         }
       ]
     },
@@ -370,7 +813,31 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "c0ec0890a258994c145e6047609675199aac6aeb591ee2403f388fc841fa61d6",
-          "new_hash": "453bb6621d007ac9f9dcd2215ef03c0c36caa94f3a49b81d704d1811f33ce09b"
+          "new_hash": "4d76d706eec878a6949970ffb29cadbb186a1f5a14c050593285e8b8e31dee29",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "453bb6621d007ac9f9dcd2215ef03c0c36caa94f3a49b81d704d1811f33ce09b"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Отчеты/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Отчеты/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_Tools",
@@ -378,7 +845,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "da769e19066fbdf4934416b50cc7b4b12181d121122c439030998a71165da964",
-          "new_hash": "c4c5d4d09c08922d076d968bd36d28c411863d8d7a932d344cf9cd3f22410f17"
+          "new_hash": "c4c5d4d09c08922d076d968bd36d28c411863d8d7a932d344cf9cd3f22410f17",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "c4c5d4d09c08922d076d968bd36d28c411863d8d7a932d344cf9cd3f22410f17"
+          ]
         }
       ]
     },
@@ -391,7 +862,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "dd45bb40e37d361e8809bceed7322862630ee6c0bd870a7bc526ef2d385db93a",
-          "new_hash": "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c"
+          "new_hash": "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ccff033f6418c825eca19f64d207922326a1232c4cd495a4bdd80cf592e0535c"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -399,7 +874,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "f83e9f896ba31a8663e8dad2ba752e72e4faaab3980a4bf610380d0a10bb33c0",
-          "new_hash": "f58ef9255aac45d2cce268fde777980993b626d63518e9f0800260162e155667"
+          "new_hash": "3d67809f59605bd107d865a3d6663108bc659592bdc76dd129262379a2b6fbea",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "f58ef9255aac45d2cce268fde777980993b626d63518e9f0800260162e155667"
+          ]
         },
         {
           "name": "Tools",
@@ -407,7 +886,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "20afa5999b243d5ccaaa731a3778e0db19262a1de7313e5f0eb153b488be7c0b",
-          "new_hash": "06e2729b45cb504bd945135bad9597400cbd60388858d6a18a24d684c9137f3b"
+          "new_hash": "15c7b72def36f7d8941b022ee7aeda24e7b57258f56b612f13daa5d47cb46efe",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "06e2729b45cb504bd945135bad9597400cbd60388858d6a18a24d684c9137f3b"
+          ]
         },
         {
           "name": "ValueImport",
@@ -415,7 +898,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "81d9e54550ddff83577d80f22d7cd43a2d947a23c75b183e36f34022792cf169",
-          "new_hash": "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27"
+          "new_hash": "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "877cb864641132dfc1c37e142cea28eb983a7327b38404c394b19d79ea3b1c27"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Очаг/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -423,7 +920,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Очаг/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "b6fa3ba05e25e02a4f264583b23b37e8832a2248970e0078d9285e45883fadc5",
+          "new_hash": "2a9cac98f2faa5f65150a332190c5328ec453283931274692a35fdffea21f93c",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "b6fa3ba05e25e02a4f264583b23b37e8832a2248970e0078d9285e45883fadc5"
+          ]
         }
       ]
     },
@@ -436,7 +949,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "7c4d469a10eeb7b4bf6b59acf56ae92c3abe50868a9f872eb73e1c80539876e9",
-          "new_hash": "4ebb99644410558ab88662c67d8f347929fc0649c6d54537880cf0b6133c8c0d"
+          "new_hash": "4ebb99644410558ab88662c67d8f347929fc0649c6d54537880cf0b6133c8c0d",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "4ebb99644410558ab88662c67d8f347929fc0649c6d54537880cf0b6133c8c0d"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -444,7 +961,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "d4d1411fa1c2a82c11c985c495844c0dd6cde5d9b6c8cf728d46d23682746446",
-          "new_hash": "47bc83d9b0a25d7d783cd463132b13a976dabb1b05e259f8a898313c6dcf327a"
+          "new_hash": "ed96cb5737f200dabdcba42be7c98d078670763ea9b081d34d131e95fd5843ea",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "47bc83d9b0a25d7d783cd463132b13a976dabb1b05e259f8a898313c6dcf327a"
+          ]
         },
         {
           "name": "Tools",
@@ -452,7 +973,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "50d04e845d32751b0e9be430c986c747d65ed690a0a9663e0d07352e05ad1061",
-          "new_hash": "4c5fa2d30c20357ed8e6652173e44f1a7af812bcd16f9ac87c44c37bb14737a9"
+          "new_hash": "4c5fa2d30c20357ed8e6652173e44f1a7af812bcd16f9ac87c44c37bb14737a9",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "4c5fa2d30c20357ed8e6652173e44f1a7af812bcd16f9ac87c44c37bb14737a9"
+          ]
         },
         {
           "name": "ValueImportModule",
@@ -460,7 +985,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "ced9c99c609bcbb0f9f640291367442f75758196ca517272681c3e0ee16a7a80",
-          "new_hash": "c5691f4a434322adcfb0ef4e5bfa413caa3779cd8b3e8b65a5f7688563cb1e06"
+          "new_hash": "c5691f4a434322adcfb0ef4e5bfa413caa3779cd8b3e8b65a5f7688563cb1e06",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "c5691f4a434322adcfb0ef4e5bfa413caa3779cd8b3e8b65a5f7688563cb1e06"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/ПТВ НРС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -468,7 +1007,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/ПТВ НРС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "2fdea9a38ebc2b6beb9875bb9580dd1d35fd105b24c129d7f2d1f61a5fe80f09",
+          "new_hash": "785ec62ce493d5d0bf9f4901414bc65b5259b0fb8d85935565a5d19dff2c723d",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "2fdea9a38ebc2b6beb9875bb9580dd1d35fd105b24c129d7f2d1f61a5fe80f09"
+          ]
         }
       ]
     },
@@ -481,7 +1036,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "5653574024efee6d699eb11ac23ead6be949c8d27c0bbec90033fb6591bf042c",
-          "new_hash": "e56b4d73fd24c15a7f1e42a54f958aab83627af4f3923b8f518b43de8d04c8eb"
+          "new_hash": "e56b4d73fd24c15a7f1e42a54f958aab83627af4f3923b8f518b43de8d04c8eb",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e56b4d73fd24c15a7f1e42a54f958aab83627af4f3923b8f518b43de8d04c8eb"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -489,7 +1048,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "117943b37f6cc7f17ef66572389f953da5adf84ee9aea91f3e746bf1dae58591",
-          "new_hash": "436a594e1f9dffb98289122cb7facc082b965fde7bc535e530995554479f5a47"
+          "new_hash": "a3f427e20341b3b12870cf8f0a5f89683ee37e3c4604eeb104914b63e4610641",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "436a594e1f9dffb98289122cb7facc082b965fde7bc535e530995554479f5a47"
+          ]
         },
         {
           "name": "Tools",
@@ -497,7 +1060,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "49696ba39a68b91e174ae5297d7264e6c2bcda42ab98a58ffc873de81fe8e7f0",
-          "new_hash": "fd294235a4276e8e3587ce48fef6de5f9b590fec0f11993a879a03c4d110e8f4"
+          "new_hash": "fd294235a4276e8e3587ce48fef6de5f9b590fec0f11993a879a03c4d110e8f4",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "fd294235a4276e8e3587ce48fef6de5f9b590fec0f11993a879a03c4d110e8f4"
+          ]
         },
         {
           "name": "ValueImportModule",
@@ -505,7 +1072,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "11eac8fb00866d35ee61e694c203d33e73d4e73572fa040cbaf3cbac0dad17ab",
-          "new_hash": "935a37a9bafd1d84802d94433d95698e65c23fc940c4f028348758b8e0637361"
+          "new_hash": "935a37a9bafd1d84802d94433d95698e65c23fc940c4f028348758b8e0637361",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "935a37a9bafd1d84802d94433d95698e65c23fc940c4f028348758b8e0637361"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/ПТВ/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -513,7 +1094,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/ПТВ/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "2bfd2874af40eaa466714427a0c70f335d8a4e4bf8c27e9853a6607733e76263",
+          "new_hash": "0689b5ed5f7d23bae6980dc8bf76f252c7f0104444307724f67cbdc3e7560e60",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "2bfd2874af40eaa466714427a0c70f335d8a4e4bf8c27e9853a6607733e76263"
+          ]
         }
       ]
     },
@@ -521,12 +1118,48 @@
       "stencil": "План на местности.vss",
       "modules": [
         {
+          "name": "ThisDocument",
+          "path": "_codes/План на местности/ThisDocument.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "5573f2635b90a6d676be2a4f7f0d7ac0558189c4bfcdb0b29b2e6d320cfb920e",
+          "new_hash": "f73d0b489b36e8a4dd08e63b4480021e52b2f6acb7be98bed371c5235cd564dc",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "5573f2635b90a6d676be2a4f7f0d7ac0558189c4bfcdb0b29b2e6d320cfb920e"
+          ]
+        },
+        {
           "name": "Tools",
           "path": "_codes/План на местности/Tools.bas",
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "142583568a47bf29adfed242db3483305e435212e7e63bc8ee2d5f9ee8c41435",
-          "new_hash": "a716f5eec41a7eab10d0b21f910ab6af4272ba1572b47beb5aa7c8bc22f8e2f2"
+          "new_hash": "a716f5eec41a7eab10d0b21f910ab6af4272ba1572b47beb5aa7c8bc22f8e2f2",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "a716f5eec41a7eab10d0b21f910ab6af4272ba1572b47beb5aa7c8bc22f8e2f2"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/План на местности/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/План на местности/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -539,7 +1172,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "1424247efd2f7a6a0352729e1f8e23548e295d35c3f788d03c1400520207ebc0",
-          "new_hash": "04fbaf6a3abd275b0d882dcad70fbee921f20cd524b97e19e0f655a6aa364323"
+          "new_hash": "04fbaf6a3abd275b0d882dcad70fbee921f20cd524b97e19e0f655a6aa364323",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "04fbaf6a3abd275b0d882dcad70fbee921f20cd524b97e19e0f655a6aa364323"
+          ]
         },
         {
           "name": "SpisImport",
@@ -547,7 +1184,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "bbac3bb80fe4e91c0d1f669352adc6bf0138072ed14a0475a57d52b389dabeab",
-          "new_hash": "0323bc51a1110aa95eb27ed42486b6a9bbf34987a6d16b363a1f84eada037872"
+          "new_hash": "0323bc51a1110aa95eb27ed42486b6a9bbf34987a6d16b363a1f84eada037872",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "0323bc51a1110aa95eb27ed42486b6a9bbf34987a6d16b363a1f84eada037872"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -555,7 +1196,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "300f6c5acc24aad6190ff82349dc4acc8aa24798939b87762cdb6ab0ac445470",
-          "new_hash": "d3245a1a71d696a4cc41fce2875d130cf218e5f2cd73e79d14e0c67a6ea3de9b"
+          "new_hash": "fc7f051ca80fb66cc0937a0582754ee7442913150ebdf84ab708c619292bbb4e",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "d3245a1a71d696a4cc41fce2875d130cf218e5f2cd73e79d14e0c67a6ea3de9b"
+          ]
         },
         {
           "name": "Tools",
@@ -563,7 +1208,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "889c38d98e29d7ad8be7fc2b1de57ae426ac753dce0bc4346a805c59909b5d65",
-          "new_hash": "a0b8d387509471431a2f044d78f6f6efa4d4ac85955b3faa042592cae3121fa2"
+          "new_hash": "a0b8d387509471431a2f044d78f6f6efa4d4ac85955b3faa042592cae3121fa2",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "a0b8d387509471431a2f044d78f6f6efa4d4ac85955b3faa042592cae3121fa2"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Пожарная техника НРС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -571,7 +1230,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Пожарная техника НРС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "29d18a262ab576a6d4fe5b11c0268baa6081b464774ae2eeb9914ce891d9bbc2",
+          "new_hash": "2f26b5718f2c1a93572a829570cfe78bca5dfa65ceefbb12ee759df4f41e374c",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "29d18a262ab576a6d4fe5b11c0268baa6081b464774ae2eeb9914ce891d9bbc2"
+          ]
         }
       ]
     },
@@ -584,7 +1259,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "2d62de9ae4b443884e846fcc6a8512ef7e127cf95c230cead21f22dfd6428dea",
-          "new_hash": "575d1fe3b13a7d1fd243ffe7ffabd7254855634272c5c090f68df79a7becdc1b"
+          "new_hash": "575d1fe3b13a7d1fd243ffe7ffabd7254855634272c5c090f68df79a7becdc1b",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "575d1fe3b13a7d1fd243ffe7ffabd7254855634272c5c090f68df79a7becdc1b"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -592,7 +1271,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "2260a19ff56cefabd9ae5baa346efb0bd91eff2f0c8e6bb1c5075f2d355ee305",
-          "new_hash": "037c3a1f53e0e17022a71bf9920eeed9ae842112a7ccac839cc06388c1d9b980"
+          "new_hash": "0c23a056f276c711256994e4e6a81e4f02d6a8d99887f5761b63ad209d35a3db",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "037c3a1f53e0e17022a71bf9920eeed9ae842112a7ccac839cc06388c1d9b980"
+          ]
         },
         {
           "name": "Tools",
@@ -600,7 +1283,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "3a30022eb17aea8fbabdd08d510eb58ebf72f68c2bc283c7ad69d3bc9e853f1c",
-          "new_hash": "473f850d3d2f27b86ea2c2089d2f3d55352ca184ef155036c8db8b1e92441ac0"
+          "new_hash": "473f850d3d2f27b86ea2c2089d2f3d55352ca184ef155036c8db8b1e92441ac0",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "473f850d3d2f27b86ea2c2089d2f3d55352ca184ef155036c8db8b1e92441ac0"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Пожарная техника/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -608,7 +1305,58 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Пожарная техника/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "14e26270a79e3495570be65584d6300cce2fb4681186a4aa239c1a9bdcac35b7",
+          "new_hash": "2270dafcba8a127857da754b8d83f3dd08c5a70b4ec1274211dfe876d5ccf4bc",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "14e26270a79e3495570be65584d6300cce2fb4681186a4aa239c1a9bdcac35b7"
+          ]
+        }
+      ]
+    },
+    {
+      "stencil": "Поэтажный план.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Поэтажный план/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Поэтажный план/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Поэтажный план/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -621,7 +1369,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "397cf6792f09e138ffd52b8c8c02c23e1c19bff27f0804336048cc3f831864fb",
-          "new_hash": "ab62744c2fa5ec3b9061790823cd2e66a5903433d5833b9f8f42a0feaa9cab93"
+          "new_hash": "df0e24a3328aeca43d49cac63107c9760323451764b1dad7ab4694c1c84dd306",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ab62744c2fa5ec3b9061790823cd2e66a5903433d5833b9f8f42a0feaa9cab93"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Прочее/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "c_WorkPlaces",
@@ -629,7 +1391,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9becaff7f0ad757f938cc6e1becf6a1a7de41432e135b32c1cbed722d734e9f5",
-          "new_hash": "58ba9b6c8303464543e00f3fe9fead835b39f68ba0c74744cc259037eb500f3d"
+          "new_hash": "58ba9b6c8303464543e00f3fe9fead835b39f68ba0c74744cc259037eb500f3d",
+          "component_type": 2,
+          "accepted_previous_hashes": [
+            "58ba9b6c8303464543e00f3fe9fead835b39f68ba0c74744cc259037eb500f3d"
+          ]
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Прочее/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_Tools",
@@ -637,7 +1413,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "3889e5cbb412971f3808c5fd9e6de52b0b23dcfbaf72149a97d8e4a1e20f5df2",
-          "new_hash": "2b354ddc0b897132748588bb2872ca6bb1175970a20195b833e1607c7a6f6bbc"
+          "new_hash": "2b354ddc0b897132748588bb2872ca6bb1175970a20195b833e1607c7a6f6bbc",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "2b354ddc0b897132748588bb2872ca6bb1175970a20195b833e1607c7a6f6bbc"
+          ]
         },
         {
           "name": "m_WorkPlaces",
@@ -645,7 +1425,97 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "0b0b6d62aca29245050e52f9534d966684ac121971183cd7e2b62ae0a7b73595",
-          "new_hash": "34522f6c7079910766f905d891c7ecf85e3e1eb552344b764b1eaa96ef8a3468"
+          "new_hash": "34522f6c7079910766f905d891c7ecf85e3e1eb552344b764b1eaa96ef8a3468",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "34522f6c7079910766f905d891c7ecf85e3e1eb552344b764b1eaa96ef8a3468"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Прочее/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "d4303eaf390da5d3d290420e621ed12500759579b2e41516b3aeb546b4fce4a0",
+          "new_hash": "c38879ca1346dfb20d91dc783ce66f65b61f0945bb9f0cf01c58903b795afca2",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "d4303eaf390da5d3d290420e621ed12500759579b2e41516b3aeb546b4fce4a0"
+          ]
+        }
+      ]
+    },
+    {
+      "stencil": "Резервуары.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Резервуары/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Резервуары/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Резервуары/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        }
+      ]
+    },
+    {
+      "stencil": "Робототехнические средства.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Робототехнические средства/ThisDocument.bas",
+          "encoding": "utf-8",
+          "is_new": false,
+          "original_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "new_hash": "29f6ac900d92413447915de583c83c17f0aa5d3ad65cb89ff11b180f2e0f1209",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Робототехнические средства/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Робототехнические средства/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -658,7 +1528,31 @@
           "encoding": "utf-8",
           "is_new": false,
           "original_hash": "1380e38979e2b9596e6ef23ddc0f915a621deb0dbbdd6e3210842ee0824607de",
-          "new_hash": "dea7448ae7a68c630d02cd0b651cc4a34b8a5224fa7674e66d206f3c51ff9557"
+          "new_hash": "b13f68bb909bda0c2f8036ed64cf7d1b732ff7152131b96b39eefbcb47d06446",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "dea7448ae7a68c630d02cd0b651cc4a34b8a5224fa7674e66d206f3c51ff9557"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Свойства и экспорт/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Свойства и экспорт/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_tools",
@@ -666,7 +1560,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "975efb6be5d4edc1e0822f807461aa028c147f8854c07ff644d8e0ef92c0fe86",
-          "new_hash": "97fc1141ec9ac6d6f886292528ecdc6522be30f6cce87c2099f05ffccccc2c4b"
+          "new_hash": "97fc1141ec9ac6d6f886292528ecdc6522be30f6cce87c2099f05ffccccc2c4b",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "97fc1141ec9ac6d6f886292528ecdc6522be30f6cce87c2099f05ffccccc2c4b"
+          ]
         }
       ]
     },
@@ -679,7 +1577,23 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "166bf879cb80947667767da0536122445db1a2d28e040e9f6ba2b01bbb4883cd",
-          "new_hash": "ea9816decf3a656508fecf0750389dd886bb3eef0931ea478c78187f49ec0c8d"
+          "new_hash": "ea9816decf3a656508fecf0750389dd886bb3eef0931ea478c78187f49ec0c8d",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ea9816decf3a656508fecf0750389dd886bb3eef0931ea478c78187f49ec0c8d"
+          ]
+        },
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Связь и освещение/ThisDocument.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "b7e89c3d239865535a1a812950a85719e5bbdd3e409471297a0b9be0c71a5a7d",
+          "new_hash": "f4bec85ace8e7683a883d28eec9bd8590a55455d6833de258145f6834f1d850e",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "b7e89c3d239865535a1a812950a85719e5bbdd3e409471297a0b9be0c71a5a7d"
+          ]
         },
         {
           "name": "Tools",
@@ -687,7 +1601,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9b412a8ea8c6f88dfc8df24e1eabd4fb553fcbc6100bb220e7a606cb0329f49a",
-          "new_hash": "09d460e02b753db44990ff49c70543c880b3cd3cd742f963981664e9a71322f7"
+          "new_hash": "09d460e02b753db44990ff49c70543c880b3cd3cd742f963981664e9a71322f7",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "09d460e02b753db44990ff49c70543c880b3cd3cd742f963981664e9a71322f7"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Связь и освещение/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -695,7 +1623,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Связь и освещение/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "788968d8ec44fefed33a01e984674a2d3f777f3c281ece101719cdf9b0441c6c",
+          "new_hash": "2b427c6f8b0acdde4a5204ad5b4b28e1e366b1d7a06cb298692be90182f5a700",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "788968d8ec44fefed33a01e984674a2d3f777f3c281ece101719cdf9b0441c6c"
+          ]
         }
       ]
     },
@@ -703,12 +1647,48 @@
       "stencil": "Совмещенный график.vss",
       "modules": [
         {
+          "name": "ThisDocument",
+          "path": "_codes/Совмещенный график/ThisDocument.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "e9de58e1f03eb2066c37156c6df8f82a1c5161dd085a9ca366beebcb57e9c5ee",
+          "new_hash": "74285fd40bb60a24b1cec6c59d563ba6a8d07f1ad215eb6589c71b5a5738ab0b",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e9de58e1f03eb2066c37156c6df8f82a1c5161dd085a9ca366beebcb57e9c5ee"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Совмещенный график/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Совмещенный график/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
           "name": "m_Tools",
           "path": "_codes/Совмещенный график/m_Tools.bas",
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "e6d2d5bb9d058893a720c3f11e4fdb04ef6897a1afd781b9abc8c7fd5647ace9",
-          "new_hash": "ee21d3ea2b45ad3a062d35a3807576dd673fe188381d3a2aea4d9d7e3f41d73b"
+          "new_hash": "ee21d3ea2b45ad3a062d35a3807576dd673fe188381d3a2aea4d9d7e3f41d73b",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "ee21d3ea2b45ad3a062d35a3807576dd673fe188381d3a2aea4d9d7e3f41d73b"
+          ]
         }
       ]
     },
@@ -721,7 +1701,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "b38922e287ade29a044a097ebc7342007e7fe41baf9b126bbd92d2af94bd892a",
-          "new_hash": "55fdb3aa7adfa52c7253a9f37da740a867920e5ef69842434ea5888288ad8578"
+          "new_hash": "4e522aee98976f7a90c4282fcd550e2046cda4dcd8dda1e823fa4de1c71aee89",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "55fdb3aa7adfa52c7253a9f37da740a867920e5ef69842434ea5888288ad8578"
+          ]
         },
         {
           "name": "Tools",
@@ -729,7 +1713,31 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "39f667b3c143d6f94d4a16f31849c60b86a0c40995fb19165600820ca217b73c",
-          "new_hash": "864250ead768aabf5d3a7da8e34c055d0072dde9060b7e75ba5e04ec492eae55"
+          "new_hash": "864250ead768aabf5d3a7da8e34c055d0072dde9060b7e75ba5e04ec492eae55",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "864250ead768aabf5d3a7da8e34c055d0072dde9060b7e75ba5e04ec492eae55"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Специальные функции/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Специальные функции/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -742,7 +1750,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "450b526f507683b80b98917c5c0dde2b5191ffd8282d2490951560741b27f78b",
-          "new_hash": "2d8607e32883244867ae9c57d4228d12bb30b45b5b50026ed674a71cfb43a7d4"
+          "new_hash": "2d8607e32883244867ae9c57d4228d12bb30b45b5b50026ed674a71cfb43a7d4",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "2d8607e32883244867ae9c57d4228d12bb30b45b5b50026ed674a71cfb43a7d4"
+          ]
         },
         {
           "name": "SpisImport",
@@ -750,7 +1762,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "5af611ab1453fe50bfc847b06901dbabe4f540c60e3e8f7ca12ed4195ba770eb",
-          "new_hash": "e7db63c325a08a75a01870bf3384049b7cf1b1dcc5febc829b45c3597923195f"
+          "new_hash": "e7db63c325a08a75a01870bf3384049b7cf1b1dcc5febc829b45c3597923195f",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e7db63c325a08a75a01870bf3384049b7cf1b1dcc5febc829b45c3597923195f"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -758,7 +1774,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "92157081c70579839703a006483689ec800461dfd060d4d47c20b7f134a15a12",
-          "new_hash": "1081c0675e9189149cf1b4ffd0d6181bdf4bc740732cc3340e5ceadd2d940c03"
+          "new_hash": "00412823e4af09adb7e07e16a159a283fcb587b7aa1521af0ff88a58456bba47",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "1081c0675e9189149cf1b4ffd0d6181bdf4bc740732cc3340e5ceadd2d940c03"
+          ]
         },
         {
           "name": "Tools",
@@ -766,7 +1786,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "9a0486af015b84e9f515e3ee316c70c6428f43b738fe47fc7e97e52fc47fa987",
-          "new_hash": "4cb38dd30f71ab21e80408d89aa5dc07b58a70aa1ed82205bf43ca2e80fde970"
+          "new_hash": "4cb38dd30f71ab21e80408d89aa5dc07b58a70aa1ed82205bf43ca2e80fde970",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "4cb38dd30f71ab21e80408d89aa5dc07b58a70aa1ed82205bf43ca2e80fde970"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Техника прочее НРС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -774,7 +1808,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Техника прочее НРС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "99dc55a8deac4bd4cde9b80680a30b4a91b4ef66b5b24c96a9c206a8021a9e2c",
+          "new_hash": "bb35984c86fab4baa2628c79177ca5bb494a055088e31936c8e9e99a6ff7b336",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "99dc55a8deac4bd4cde9b80680a30b4a91b4ef66b5b24c96a9c206a8021a9e2c"
+          ]
         }
       ]
     },
@@ -787,7 +1837,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "327dde5c66b3dfcfc1609ffd2c51d6f43f309f53ccf558fecae8ca9275806aad",
-          "new_hash": "fdb4dc3b5bc44d904807a231537008fa8b3418563ddbb5b6732fa01aeefa836f"
+          "new_hash": "fdb4dc3b5bc44d904807a231537008fa8b3418563ddbb5b6732fa01aeefa836f",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "fdb4dc3b5bc44d904807a231537008fa8b3418563ddbb5b6732fa01aeefa836f"
+          ]
         },
         {
           "name": "ThisDocument",
@@ -795,7 +1849,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "a5f8c2f11650d597c07030d600c3d757be2b60213c2b61c76e68777e0f135f8e",
-          "new_hash": "f84aa680438d3aa871482ba31f227c34dcf3a2356916f076da2bb0fc7c743142"
+          "new_hash": "8a539ec23c75cf3becc307269df744a56cf561f893f11444de604fffeb418e64",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "f84aa680438d3aa871482ba31f227c34dcf3a2356916f076da2bb0fc7c743142"
+          ]
         },
         {
           "name": "Tools",
@@ -803,7 +1861,21 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "570e4b60404a4a981b99f97e1bacd41208a0ed58942ca0c9a0eac11082c9ad83",
-          "new_hash": "e73b097f987715cf6f0caf5b34283913c0347278621af4ca8d39b6e04f592dc2"
+          "new_hash": "e73b097f987715cf6f0caf5b34283913c0347278621af4ca8d39b6e04f592dc2",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "e73b097f987715cf6f0caf5b34283913c0347278621af4ca8d39b6e04f592dc2"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Техника прочее/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_GFSSafety",
@@ -811,7 +1883,23 @@
           "encoding": "utf-8",
           "is_new": true,
           "original_hash": null,
-          "new_hash": "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "95c5b4aca4bd5c1c1a11265230430b01f1322401ba1649fd8f5291ed70e65225"
+          ]
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Техника прочее/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "49cf8f263d9c0145bf659c6b17f838b3440e4c8403b9d717e58351891461b1d8",
+          "new_hash": "09cabc756c78368c3001acdaa3f22d2edebd7031a03ee7822dcd789d936e5a20",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "49cf8f263d9c0145bf659c6b17f838b3440e4c8403b9d717e58351891461b1d8"
+          ]
         }
       ]
     },
@@ -824,7 +1912,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "c69dd383624effdb4adb99c192ad23d2453a0e6407d037151bb2b87f178b04e0",
-          "new_hash": "59ea570f7c2de8090295a50b54e21df76943d5f6f91ac1f174070055e60e4e48"
+          "new_hash": "5c0278d9b32029b07d429dbbfa26e128ec49f29aec5073a98fdd64ea2e3c8f36",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "59ea570f7c2de8090295a50b54e21df76943d5f6f91ac1f174070055e60e4e48"
+          ]
         },
         {
           "name": "Tools",
@@ -832,7 +1924,113 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "5e68ad17ba598fa3049d8954bfc56384d189bf19ac6fee8318fa366f7309d88e",
-          "new_hash": "14bb3007e6db7317e9e808001953f08f36043f4d05e4f94e9ae9b92c91bfc343"
+          "new_hash": "14bb3007e6db7317e9e808001953f08f36043f4d05e4f94e9ae9b92c91bfc343",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "14bb3007e6db7317e9e808001953f08f36043f4d05e4f94e9ae9b92c91bfc343"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Управление СиС/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Управление СиС/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_WorkWithStyles",
+          "path": "_codes/Управление СиС/m_WorkWithStyles.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "98bc6389454258f3a14403100672034c8e1bb8cba06249a106fc4432e4ade578",
+          "new_hash": "d76e8edb57dbe2bdda6a0aa2197bac698037444ab42b47e404ab17a3f5d65cba",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "98bc6389454258f3a14403100672034c8e1bb8cba06249a106fc4432e4ade578"
+          ]
+        }
+      ]
+    },
+    {
+      "stencil": "Учения.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Учения/ThisDocument.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "e0167e013e49a0f05d2ae59d2dc9033e953abf6bb1804865ffcfebc22a6142a2",
+          "new_hash": "da84217871108df301c4d7aa01bb5b48bbb3c456ef6db33948b27d37a152b56d",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Учения/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Учения/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        }
+      ]
+    },
+    {
+      "stencil": "Формулы.vss",
+      "modules": [
+        {
+          "name": "ThisDocument",
+          "path": "_codes/Формулы/ThisDocument.bas",
+          "encoding": "windows-1251",
+          "is_new": false,
+          "original_hash": "e2b2c91180b421c2aa2d746b48793ab33bdee587468a6f8a25562a1d33453521",
+          "new_hash": "3545e81a461eff9fd74cbc071fbde72343d4fe1ed4972ef6ee062f182be925c5",
+          "component_type": 1,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Формулы/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Формулы/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         }
       ]
     },
@@ -845,7 +2043,31 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "6f68cf9bb04f6aa26013039ca9a657fa9d331adcee5501fda07ad806438aef73",
-          "new_hash": "2043d379cc520c1e724fca5524df4bb6d58d585c683f43ef620563139bbc3b8b"
+          "new_hash": "cd977237d837dd1d3ddc613c0d4c4a3d2fa2bd9e73a17b4f77c0ae64b2a2a7de",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "2043d379cc520c1e724fca5524df4bb6d58d585c683f43ef620563139bbc3b8b"
+          ]
+        },
+        {
+          "name": "c_GFSStencilSession",
+          "path": "_codes/Эвакуация/c_GFSStencilSession.cls",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "27c5ea8ea26e95790369b482105d0373cf31920d87904c7d66b4472441718a3e",
+          "component_type": 2,
+          "accepted_previous_hashes": []
+        },
+        {
+          "name": "m_GFSSafety",
+          "path": "_codes/Эвакуация/m_GFSSafety.bas",
+          "encoding": "utf-8",
+          "is_new": true,
+          "original_hash": null,
+          "new_hash": "c16245a7f077d1de2dbfb5f8f022972f742729f3624ae11b77773cdd9a789978",
+          "component_type": 1,
+          "accepted_previous_hashes": []
         },
         {
           "name": "m_tools",
@@ -853,7 +2075,11 @@
           "encoding": "windows-1251",
           "is_new": false,
           "original_hash": "779805fdd00fa793d4dcf1fe421fc2031e926ea99ac02b2f81f1dd113da91267",
-          "new_hash": "670d17e9cddcf318ca581ba2835a25287787693b93e6ec6eab0ec652a262d992"
+          "new_hash": "670d17e9cddcf318ca581ba2835a25287787693b93e6ec6eab0ec652a262d992",
+          "component_type": 1,
+          "accepted_previous_hashes": [
+            "670d17e9cddcf318ca581ba2835a25287787693b93e6ec6eab0ec652a262d992"
+          ]
         }
       ]
     }

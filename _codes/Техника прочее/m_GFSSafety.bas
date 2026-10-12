@@ -55,6 +55,7 @@ End Sub
 Public Function GFSCurrentTime(ByVal shp As Visio.Shape) As Date
     Dim docSheet As Visio.Shape
     If shp Is Nothing Then Err.Raise vbObjectError + 2403, "GFSCurrentTime", "No source shape"
+    If shp.Document.Type <> visTypeDrawing Then Err.Raise vbObjectError + 2404, "GFSCurrentTime", "Time properties belong to a drawing, not a stencil"
     Set docSheet = shp.Document.DocumentSheet
     If Not docSheet.CellExistsU("User.FireTime", 0) Then
         docSheet.AddNamedRow visSectionUser, "FireTime", visTagDefault
@@ -65,4 +66,20 @@ Public Function GFSCurrentTime(ByVal shp As Visio.Shape) As Date
         docSheet.CellsU("User.CurrentTime").FormulaU = "User.FireTime"
     End If
     GFSCurrentTime = docSheet.CellsU("User.CurrentTime").Result(visDate)
+End Function
+
+Public Function GFSHasEditableDrawing() As Boolean
+    Dim drawing As Visio.Document, drawingWindow As Visio.Window
+    On Error GoTo NotDrawing
+    Set drawing = Application.ActiveDocument
+    Set drawingWindow = Application.ActiveWindow
+    If drawing Is Nothing Then Exit Function
+    If drawingWindow Is Nothing Then Exit Function
+    If drawing.Type <> visTypeDrawing Then Exit Function
+    If drawing.ReadOnly Then Exit Function
+    If drawingWindow.Type <> visDrawing Then Exit Function
+    If drawingWindow.Page Is Nothing Then Exit Function
+    If Not (drawingWindow.Document Is drawing) Then Exit Function
+    GFSHasEditableDrawing = True
+NotDrawing:
 End Function
